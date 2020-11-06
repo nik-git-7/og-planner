@@ -1,6 +1,10 @@
 <?php
 
+namespace ogPlanner\model;
+
 require_once 'ITable.php';
+
+use ogPlanner\controller\TableException;
 
 class Table implements ITable
 {

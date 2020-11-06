@@ -1,5 +1,7 @@
 <?php
 
+namespace ogPlanner\model;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**

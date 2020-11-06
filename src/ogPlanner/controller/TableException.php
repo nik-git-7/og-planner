@@ -1,5 +1,8 @@
 <?php
 
+namespace ogPlanner\controller;
+
+use RuntimeException;
 
 class TableException extends RuntimeException
 {

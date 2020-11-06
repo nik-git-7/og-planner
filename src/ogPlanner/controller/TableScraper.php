@@ -1,7 +1,14 @@
 <?php
 
+namespace ogPlanner\controller;
+
 require_once 'IScraper.php';
-require_once 'Table.php';
+require_once '../model/Table.php';
+
+use DOMDocument;
+use DOMNode;
+use DOMXPath;
+use ogPlanner\model\Table;
 
 
 class TableScraper implements IScraper

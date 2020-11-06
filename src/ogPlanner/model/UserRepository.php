@@ -1,5 +1,6 @@
 <?php /** @noinspection PhpIncompatibleReturnTypeInspection */
 
+namespace ogPlanner\model;
 
 use Doctrine\ORM\EntityRepository;
 

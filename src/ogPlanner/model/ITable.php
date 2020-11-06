@@ -1,5 +1,6 @@
 <?php
 
+namespace ogPlanner\model;
 
 interface ITable
 {

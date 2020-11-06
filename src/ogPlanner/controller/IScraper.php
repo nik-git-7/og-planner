@@ -1,5 +1,6 @@
 <?php
 
+namespace ogPlanner\controller;
 
 interface IScraper
 {
