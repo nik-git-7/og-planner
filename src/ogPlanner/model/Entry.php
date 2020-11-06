@@ -33,38 +33,59 @@ class Entry implements IEntry
         $this->notification = $notification;
     }
 
-    public function getClass()
+    /**
+     * @return string
+     */
+    public function getClass(): string
     {
-        // TODO: Implement getClass() method.
+        return $this->class;
     }
 
-    public function getLesson()
+    /**
+     * @return int
+     */
+    public function getLesson(): int
     {
-        // TODO: Implement getLesson() method.
+        return $this->lesson;
     }
 
-    public function getRepresentative()
+    /**
+     * @return string
+     */
+    public function getRepresentative(): string
     {
-        // TODO: Implement getRepresentative() method.
+        return $this->representative;
     }
 
-    public function getSubject()
+    /**
+     * @return string
+     */
+    public function getSubject(): string
     {
-        // TODO: Implement getSubject() method.
+        return $this->subject;
     }
 
-    public function getRoom()
+    /**
+     * @return string
+     */
+    public function getRoom(): string
     {
-        // TODO: Implement getRoom() method.
+        return $this->room;
     }
 
-    public function getKind()
+    /**
+     * @return string
+     */
+    public function getKind(): string
     {
-        // TODO: Implement getKind() method.
+        return $this->kind;
     }
 
-    public function getNotification()
+    /**
+     * @return string
+     */
+    public function getNotification(): string
     {
-        // TODO: Implement getNotification() method.
+        return $this->notification;
     }
 }

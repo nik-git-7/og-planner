@@ -6,7 +6,6 @@ use RuntimeException;
 
 class TableException extends RuntimeException
 {
-
     /**
      * TableException constructor.
      * @param string $string

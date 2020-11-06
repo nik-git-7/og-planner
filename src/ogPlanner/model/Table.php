@@ -64,7 +64,14 @@ class Table implements ITable
 
     public function __toString(): string
     {
-        // TODO: Implement __toString() method.
-        return '';
+        $rep = '';
+
+        foreach ($this->columnNames as $columnName) {
+            $rep .= $columnName . '        ';
+        }
+
+        $rep .= '\n';
+
+        return $rep;
     }
 }
