@@ -5,7 +5,7 @@ interface IUser
 {
     public function getEMail();
 
-    public function getClass();
+    public function getClasses();
 
     public function getName();
 }

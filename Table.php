@@ -1,42 +1,66 @@
 <?php
 
+require_once 'ITable.php';
 
-class Table
+class Table implements ITable
 {
-    protected array $headerColumns;
-    protected array $rows;
+    protected array $columnNames;
+    protected array $rowData;   // Row based
 
     /**
      * Table constructor.
-     * @param array $headerColumns
-     * @param array $rows 2-dim array
+     * @param array $rowData
+     * @param array $columnNames
      */
-    public function __construct(array $headerColumns, array $rows)
+    public function __construct(array $columnNames, array $rowData = array([]))
     {
-        $this->headerColumns = $headerColumns;
-        $this->rows = $rows;
+        $this->columnNames = $columnNames;
+        $this->rowData = $rowData;
     }
 
-    public function getColumnByName(string $columnName)
+    /**
+     * @param array $rows
+     */
+    public function addRows(array $rows): void
     {
+        $this->rowData[] = $rows;
+    }
 
+    public function getRows(string $key, string $value): array
+    {
+        if (!array_search($key, $this->columnNames)) {
+            throw new TableException('Unknown key given');
+        }
+
+        $rows = array([]);
+        for ($i = 0; $i < count($this->rowData); $i++) {
+            if ($this->rowData[$i][$key] == $value) {
+                $rows[] = $this->rowData[$i][$key];
+            }
+        }
+
+        return $rows;
     }
 
     /**
      * @return array
      */
-    public function getHeaderColumns(): array
+    public function getColumnNames(): array
     {
-        return $this->headerColumns;
+        return $this->columnNames;
     }
 
     /**
-     * @return array
+     * @return array|array[]
      */
-    public function getRows(): array
+    public function getRowData()
     {
-        return $this->rows;
+        return $this->rowData;
     }
 
-
+    public function __toString(): string
+    {
+        // TODO: Implement __toString() method.
+        return '';
+    }
 }

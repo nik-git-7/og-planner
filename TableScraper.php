@@ -1,6 +1,7 @@
 <?php
 
 require_once 'IScraper.php';
+require_once 'Table.php';
 
 
 class TableScraper implements IScraper
@@ -27,14 +28,12 @@ class TableScraper implements IScraper
         $xpath = new DOMXPath($doc);
         $headerNodes = $xpath->query('//table/thead/tr/th');
         $rowNodes = $xpath->query('//table/tbody/tr');
-        var_dump($rowNodes);
 
         $headerColumns = [];
         /** @var DOMNode $headerNode */
         foreach ($headerNodes as $headerNode) {
             $headerColumns[] = prepareInput($headerNode->nodeValue);
         }
-        print_r($headerColumns);
 
         $rows = [];
         /** @var DOMNode $rowNode */
@@ -49,7 +48,6 @@ class TableScraper implements IScraper
 
             $rows[] = $row;
         }
-        print_r($rows);
 
         return new Table($headerColumns, $rows);
     }

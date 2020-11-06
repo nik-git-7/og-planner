@@ -4,7 +4,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="users")
+ * @ORM\Table(name="users") // Todo: Add repo annotation
  */
 class User implements IUser
 {
@@ -20,7 +20,7 @@ class User implements IUser
      * @ORM\Column(type="string")
      * @var string
      */
-    protected string $name;
+    protected string $name; // Todo: Nullable?
 
     /**
      * @ORM\Column(type="string")
@@ -33,7 +33,7 @@ class User implements IUser
         return $this->email;
     }
 
-    public function getClass()
+    public function getClasses()
     {
         // TODO: Implement getForm() method.
         // return $this->

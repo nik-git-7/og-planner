@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpIncompatibleReturnTypeInspection */
 
 
 use Doctrine\ORM\EntityRepository;
