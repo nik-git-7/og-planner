@@ -62,6 +62,16 @@ class Table implements ITable
         return $this->rowData;
     }
 
+    public function getRowCount(): int
+    {
+        return count($this->rowData);
+    }
+
+    public function isEmpty(): bool
+    {
+        return $this->getRowCount() == 0;
+    }
+
     public function __toString(): string
     {
         $rep = '';
@@ -73,15 +83,5 @@ class Table implements ITable
         $rep .= '\n';
 
         return $rep;
-    }
-
-    public function getRowCount(): int
-    {
-        return count($this->rowData);
-    }
-
-    public function isEmpty(): bool
-    {
-        return $this->getRowCount() == 0;
     }
 }

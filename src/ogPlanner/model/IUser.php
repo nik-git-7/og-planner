@@ -4,9 +4,9 @@ namespace ogPlanner\model;
 
 interface IUser
 {
-    public function getEMail();
+    public function getId(): int;
 
-    public function getSchoolClasses();
+    public function getEmail(): string;
 
-    public function getName();
+    public function getName(): string;
 }

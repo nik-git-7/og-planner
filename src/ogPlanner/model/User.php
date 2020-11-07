@@ -28,19 +28,18 @@ class User implements IUser
      */
     protected string $email;
 
-    public function getEMail(): string
+    public function getEmail(): string
     {
         return $this->email;
-    }
-
-    public function getSchoolClasses()
-    {
-        // TODO: Implement getForm() method.
-        // return $this->
     }
 
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 }

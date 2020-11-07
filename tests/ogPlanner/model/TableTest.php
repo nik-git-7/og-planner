@@ -1,6 +1,6 @@
 <?php
 
-namespace src\ogPlanner\model;
+namespace ogPlanner\model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -12,22 +12,22 @@ class TableTest extends TestCase
 
     }
 
-    public function testGetRowCount()
-    {
-
-    }
-
     public function testGetAllRows()
     {
 
     }
 
-    public function testGetRows()
+    public function testIsEmpty()
     {
 
     }
 
-    public function testIsEmpty()
+    public function testGetRowCount()
+    {
+
+    }
+
+    public function testGetRows()
     {
 
     }

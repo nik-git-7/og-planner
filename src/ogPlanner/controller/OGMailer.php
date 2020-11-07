@@ -47,6 +47,6 @@ class OGMailer
                         Bitte prüfe auf <a href='{$plannerUrl}'>{$plannerUrl}</a>,
                         ob deine Stunden wirklich vertreten werden!</p>";
 
-        return mail($user->getEMail(), $subject, $content, $headers);
+        return mail($user->getEmail(), $subject, $content, $headers);
     }
 }

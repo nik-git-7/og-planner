@@ -36,7 +36,7 @@ function main(): void
         /** @var User $user */
         foreach ($users as $user) {
             if (!OGMailer::sendEntryMail($user, $entries)) {
-                logToFile('Could not send E-Mail to ' . $user->getName() . ' with E-Mail ' . $user->getEMail());
+                logToFile('Could not send E-Mail to ' . $user->getName() . ' with E-Mail ' . $user->getEmail());
             }
         }
     }

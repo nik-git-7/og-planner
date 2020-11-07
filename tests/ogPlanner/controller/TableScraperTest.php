@@ -1,6 +1,6 @@
 <?php
 
-namespace src\ogPlanner\controller;
+namespace ogPlanner\controller;
 
 use PHPUnit\Framework\TestCase;
 
