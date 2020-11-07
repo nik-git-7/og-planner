@@ -4,17 +4,17 @@ namespace ogPlanner\model;
 
 interface IEntry
 {
-    public function getClass();
+    public function getSchoolClass(): string;
 
-    public function getLesson();
+    public function getLesson(): int;
 
-    public function getRepresentative();
+    public function getRepresentative(): string;
 
-    public function getSubject();
+    public function getSubject(): string;
 
-    public function getRoom();
+    public function getRoom(): string;
 
-    public function getKind();
+    public function getKind(): string;
 
-    public function getNotification();
+    public function getNotification(): string;
 }

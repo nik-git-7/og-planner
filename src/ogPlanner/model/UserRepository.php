@@ -21,7 +21,7 @@ class UserRepository extends EntityRepository
         return $this->findOneBy(['email' => $email]);
     }
 
-    public function findUsersByClass($class): ?array
+    public function findUsersBySchoolClass(string $class): ?array
     {
         return $this->findBy(['class' => $class]);
     }
