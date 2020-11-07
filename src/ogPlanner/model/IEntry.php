@@ -1,9 +1,10 @@
 <?php
 
+namespace ogPlanner\model;
 
 interface IEntry
 {
-    public function getForm();
+    public function getClass();
 
     public function getLesson();
 

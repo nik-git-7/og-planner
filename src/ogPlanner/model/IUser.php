@@ -1,13 +1,12 @@
 <?php
 
+namespace ogPlanner\model;
 
 interface IUser
 {
     public function getEMail();
 
-    public function getForm();
+    public function getClasses();
 
     public function getName();
-
-    public function getUsersByClass(): array;
 }
