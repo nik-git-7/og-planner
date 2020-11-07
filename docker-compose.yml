@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  og-webserver:
+    image: "nginx:latest"
+    ports:
+    - 8080:80
+
+  og-php:
+    image: php
+    ports:
+    - 9000:9000
+
+  og-db:
+    image: "mysql:latest"
+    container_name: og-db
+    environment:
+      - MYSQL_ROOT_PASSWORD: 9kICMOvfM5KgPxyj
+      - MYSQL_DATABASE: og-db
+      - MYSQL_USER: sini
+      - MYSQL_PASSWORD: 9kICMOvfM5KgPxyj
+    ports:
+      - 6603:3306
+    volumes:
+    - og-db-data:/var/lib/mysql
+
+volumes:
+  og-db-data:
