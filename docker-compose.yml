@@ -12,7 +12,7 @@ services:
     - 9000:9000
 
   og-db:
-    image: "mysql:latest"
+    image: "mariadb:latest"
     container_name: og-db
     environment:
       - MYSQL_ROOT_PASSWORD: 9kICMOvfM5KgPxyj

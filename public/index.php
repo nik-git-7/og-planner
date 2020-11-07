@@ -2,12 +2,22 @@
 
 require_once 'config.php';
 require_once 'doctrine-setup.php';
-require_once '../src/ogPlanner/controller/util.php';
 
 use ogPlanner\controller\OGMailer;
 use ogPlanner\controller\TableScraper;
 use ogPlanner\model\User;
 use ogPlanner\model\UserRepository;
+use ogPlanner\controller\Util;
+
+require_once '../../../public/config.php';
+
+function logToFile(string $logMessage): void
+{
+    $file = fopen(LOG_FILE, 'a');
+    fwrite($file, $logMessage . "\r\n\r\n");
+    fclose($file);
+}
+
 
 
 function main(): void
@@ -18,7 +28,7 @@ function main(): void
         return;
     }
 
-    $map = tableToMap($table);
+    $map = Util::tableToMap($table);
 
     /** @var UserRepository $repo */
     $repo = getEntityManager()->getRepository('User');
