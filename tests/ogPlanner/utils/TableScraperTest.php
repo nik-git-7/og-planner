@@ -3,27 +3,32 @@
 namespace ogPlanner\utils;
 
 require_once "../../../public/config.php";
+require_once BASEDIR . "src/ogPlanner/utils/TableScraper.php";
 
+use ogPlanner\model\ITable;
 use PHPUnit\Framework\TestCase;
 
 class TableScraperTest extends TestCase
 {
 
-    private IScraper $tableScraper;
+    private ITable $table;
 
     public function setUp(): void
     {
-        $this->tableScraper = new TableScraper(BASEDIR . "tests/res/planner_page_1.html");
+        $tableScraper = new TableScraper(BASEDIR . "tests/res/planner_page_1.html");
+        $this->table = $tableScraper->scrape();
     }
 
-    public function testScrape()
+    public function testHeader()
     {
-        $table = $this->tableScraper->scrape();
-        $this->assertEquals(['Klasse', 'Pos', 'Vertretername', 'Fach', 'Raum', 'Art', 'Mitteilung'], $table->getColumnNames());
+        $this->assertEquals(['Klasse', 'Pos', 'Vertretername', 'Fach', 'Raum', 'Art', 'Mitteilung'],
+            $this->table->getColumnNames());
     }
 
-    public function testNotUpdated()
+    public function testFirstCell()
     {
-        echo __DIR__;
+        $this->assertEquals('05a', $this->table->getAllRows()[0][0]);
     }
+
+
 }

@@ -23,14 +23,12 @@ class TableScraper implements IScraper
 
     public function scrape(): ITable
     {
-        function prepareInput(string $input): string
-        {
-            return htmlspecialchars(stripslashes(trim($input)));
-        }
 
         // Todo: Error handling
         $html = file_get_contents($this->url); // allow_url_fopen must be set to true in php.ini; use curl instead
-
+        $html = str_replace('aside', 'div', $html);
+        $html = str_replace('footer', 'div', $html);
+        $html = str_replace('nav', 'div', $html);
         $doc = new DOMDocument();
         $doc->loadHTML($html);
         $xpath = new DOMXPath($doc);
@@ -40,7 +38,7 @@ class TableScraper implements IScraper
         $headerColumns = [];
         /** @var DOMNode $headerNode */
         foreach ($headerNodes as $headerNode) {
-            $headerColumns[] = prepareInput($headerNode->nodeValue);
+            $headerColumns[] = self::prepareInput($headerNode->nodeValue);
         }
 
         $rows = [];
@@ -51,12 +49,17 @@ class TableScraper implements IScraper
 
             /** @var DOMNode $rowEntry */
             foreach ($rowEntries as $rowEntry) {
-                $row[] = prepareInput($rowEntry->nodeValue);
+                $row[] = self::prepareInput($rowEntry->nodeValue);
             }
 
             $rows[] = $row;
         }
 
         return new Table($headerColumns, $rows);
+    }
+
+    private static function prepareInput(string $input): string
+    {
+        return htmlspecialchars(stripslashes(trim($input)));
     }
 }
