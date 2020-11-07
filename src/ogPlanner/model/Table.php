@@ -57,7 +57,7 @@ class Table implements ITable
     /**
      * @return array|array[]
      */
-    public function getRowData()
+    public function getAllRows(): array
     {
         return $this->rowData;
     }
@@ -73,5 +73,15 @@ class Table implements ITable
         $rep .= '\n';
 
         return $rep;
+    }
+
+    public function getRowCount(): int
+    {
+        return count($this->rowData);
+    }
+
+    public function isEmpty(): bool
+    {
+        return $this->getRowCount() == 0;
     }
 }

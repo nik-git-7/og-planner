@@ -2,10 +2,8 @@
 
 namespace ogPlanner\model;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="UserRepository")
  * @ORM\Table(name="users") // Todo: Add repo annotation
  */
 class User implements IUser
@@ -35,7 +33,7 @@ class User implements IUser
         return $this->email;
     }
 
-    public function getClasses()
+    public function getSchoolClasses()
     {
         // TODO: Implement getForm() method.
         // return $this->

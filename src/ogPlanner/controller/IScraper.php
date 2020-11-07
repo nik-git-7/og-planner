@@ -2,7 +2,9 @@
 
 namespace ogPlanner\controller;
 
+use ogPlanner\model\ITable;
+
 interface IScraper
 {
-    public function scrape();
+    public function scrape(): ITable;
 }

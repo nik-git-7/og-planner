@@ -8,6 +8,7 @@ require_once '../model/Table.php';
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
+use ogPlanner\model\ITable;
 use ogPlanner\model\Table;
 
 
@@ -19,14 +20,14 @@ class TableScraper implements IScraper
     {
         $this->url = $url;
     }
-    
-    public function scrape(): Table
+
+    public function scrape(): ITable
     {
         function prepareInput(string $input): string
-    {
-        return htmlspecialchars(stripslashes(trim($input)));
-    }
-    
+        {
+            return htmlspecialchars(stripslashes(trim($input)));
+        }
+
         // Todo: Error handling
         $html = file_get_contents($this->url); // allow_url_fopen must be set to true in php.ini; use curl instead
 
