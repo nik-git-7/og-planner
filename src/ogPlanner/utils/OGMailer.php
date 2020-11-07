@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ogPlanner\controller;
+namespace ogPlanner\utils;
 
 require_once '../../../public/config.php';
 

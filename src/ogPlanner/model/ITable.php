@@ -13,4 +13,6 @@ interface ITable
     public function getRowCount(): int;
 
     public function isEmpty(): bool; // Todo: default methods in PHP?
+
+    public function getColumnNames(): array;
 }

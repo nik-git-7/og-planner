@@ -1,6 +1,6 @@
 <?php
 
-namespace ogPlanner\controller;
+namespace ogPlanner\model;
 
 use RuntimeException;
 

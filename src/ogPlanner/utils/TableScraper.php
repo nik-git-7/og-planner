@@ -1,6 +1,6 @@
 <?php
 
-namespace ogPlanner\controller;
+namespace ogPlanner\utils;
 
 require_once 'IScraper.php';
 require_once '../model/Table.php';

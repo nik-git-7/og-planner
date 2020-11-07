@@ -3,29 +3,35 @@
 require_once 'config.php';
 require_once 'doctrine-setup.php';
 
-use ogPlanner\controller\OGMailer;
-use ogPlanner\controller\TableScraper;
+use ogPlanner\model\OGMailer;
+use ogPlanner\model\OGScraper;
+use ogPlanner\model\TableScraper;
 use ogPlanner\model\User;
 use ogPlanner\model\UserRepository;
-use ogPlanner\controller\Util;
+use ogPlanner\model\Util;
 
 require_once '../../../public/config.php';
 
-function logToFile(string $logMessage): void
+
+function withLogger($fun): void
 {
-    $file = fopen(LOG_FILE, 'a');
-    fwrite($file, $logMessage . "\r\n\r\n");
-    fclose($file);
+    $code = $fun();
+    Util::logToFile('Executed with Code: ' . $code);
 }
 
-
-
-function main(): void
+function main(): int
 {
+    $ogScraper = new OGScraper(PLANNER_URL);
+    $ogScraperData = $ogScraper->scrape();
+
+    if (!Util::updateFileContents($ogScraperData['plan_update'], LAST_UPDATE)) {
+        return 2;
+    }
+
     $scraper = new TableScraper(PLANNER_URL);
     $table = $scraper->scrape();
     if ($table->isEmpty()) {
-        return;
+        return 3;
     }
 
     $map = Util::tableToMap($table);
@@ -46,10 +52,13 @@ function main(): void
         /** @var User $user */
         foreach ($users as $user) {
             if (!OGMailer::sendEntryMail($user, $entries)) {
-                logToFile('Could not send E-Mail to ' . $user->getName() . ' with E-Mail ' . $user->getEmail());
+                Util::logToFile('Could not send E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
+                    ' with E-Mail ' . $user->getEmail());
             }
         }
     }
+
+    return EXIT_SUCCESS;
 }
 
-main();
+withLogger(function() {main();});

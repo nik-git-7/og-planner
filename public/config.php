@@ -13,4 +13,5 @@ define('DB_DRIVER', 'pdo_mysql');
 //define('PLANNER_URL', 'http://vertretungsplan.gym-oppenheim.de/V_DC_001.html');
 define('PLANNER_URL', 'table.html');
 
-define('LOG_FILE', '../error.log');
+define('LOG_FILE', '../var/logfile.log');
+define('LAST_UPDATE', '../var/last_update');
