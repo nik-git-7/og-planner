@@ -2,6 +2,8 @@
 
 namespace ogPlanner\utils;
 
+require_once "../../../public/config.php";
+
 use PHPUnit\Framework\TestCase;
 
 class TableScraperTest extends TestCase
@@ -11,7 +13,7 @@ class TableScraperTest extends TestCase
 
     public function setUp(): void
     {
-        $this->tableScraper = new TableScraper("../res/planner_page_1.html");
+        $this->tableScraper = new TableScraper(BASEDIR . "tests/res/planner_page_1.html");
     }
 
     public function testScrape()

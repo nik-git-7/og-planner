@@ -15,3 +15,5 @@ define('PLANNER_URL', 'table.html');
 
 define('LOG_FILE', '../var/logfile.log');
 define('LAST_UPDATE', '../var/last_update');
+
+define('BASEDIR', __DIR__ . '/../');

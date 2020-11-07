@@ -3,7 +3,7 @@
 namespace ogPlanner\utils;
 
 require_once 'IScraper.php';
-require_once '../model/Table.php';
+require_once BASEDIR . 'src/ogPlanner/model/Table.php';
 
 use DOMDocument;
 use DOMNode;
