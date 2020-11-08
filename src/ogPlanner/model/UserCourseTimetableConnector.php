@@ -6,10 +6,16 @@ namespace ogPlanner\model;
 require_once BASEDIR . 'src/ogPlanner/model/IUserCourseTimetableConnector.php';
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * @ORM\Entity(repositoryClass="ogPlanner\dao\UserCourseTimetableConnectorRepo")
- * @ORM\Table(name="user_schoolclass_timetable_connector")
+ * @ORM\Table(name="user_schoolclass_timetable_connector",
+ *     uniqueConstraints={
+ *      @UniqueConstraint(name="unique_connector",
+ *          columns={"userId", "course", "timetableId"})
+ *     }
+ *  )
  */
 class UserCourseTimetableConnector implements IUserCourseTimetableConnector
 {
