@@ -45,7 +45,7 @@ function main(): int
         return 3;
     }
 
-    $map = Util::tableToMap($table);
+    $map = Util::convertTableToMap($table);
 
     /** @var IUserRepository $repo */
 //    $repo = getEntityManager()->getRepository('User');

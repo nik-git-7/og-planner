@@ -20,19 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdd7d7e8-5a52-41c3-a02e-df58c0b7e2b1" name="Default Changelist" comment="added vendor and composer.lock to .gitignore">
-      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserSchoolClassConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/UserSchoolClassConnector.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/doctrine-setup.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/doctrine-setup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/utils/OGMailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/utils/OGMailer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/utils/OGScraper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/utils/OGScraper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ogPlanner/utils/Util.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/utils/Util.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/ogPlanner/utils/OGScraperTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ogPlanner/utils/OGScraperTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/last_update" beforeDir="false" afterPath="$PROJECT_DIR$/var/last_update" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/logfile.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logfile.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +172,7 @@
       <updated>1604754131341</updated>
       <workItem from="1604754133747" duration="3058000" />
       <workItem from="1604766433323" duration="2983000" />
-      <workItem from="1604769475844" duration="10802000" />
+      <workItem from="1604769475844" duration="14065000" />
     </task>
     <task id="LOCAL-00001" summary="created niklas branch, started with docker">
       <created>1604765188353</created>
@@ -223,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604776204905</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Bugfixes, especially require_once">
+      <created>1604831855427</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604831855427</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,7 +248,8 @@
     <MESSAGE value="renamed controller to utils, updated ITable.php, added Unit Test, added var" />
     <MESSAGE value="introduced BASEDIR constant" />
     <MESSAGE value="Test TableScraper.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test TableScraper.php" />
+    <MESSAGE value="Bugfixes, especially require_once" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes, especially require_once" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2185" y="398" key="#Deployment" timestamp="1604830573766">
@@ -283,22 +284,22 @@
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state x="715" y="485" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604766165560" />
-    <state width="2667" height="424" key="GridCell.Tab.0.bottom" timestamp="1604830616773">
+    <state width="1671" height="424" key="GridCell.Tab.0.bottom" timestamp="1604831859352">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
-    <state width="2667" height="424" key="GridCell.Tab.0.bottom/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604830616773" />
-    <state width="2667" height="424" key="GridCell.Tab.0.center" timestamp="1604830616772">
+    <state width="1671" height="424" key="GridCell.Tab.0.bottom/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604831859352" />
+    <state width="1671" height="424" key="GridCell.Tab.0.center" timestamp="1604831859351">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
-    <state width="2667" height="424" key="GridCell.Tab.0.center/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604830616772" />
-    <state width="2667" height="424" key="GridCell.Tab.0.left" timestamp="1604830616771">
+    <state width="1671" height="424" key="GridCell.Tab.0.center/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604831859351" />
+    <state width="1671" height="424" key="GridCell.Tab.0.left" timestamp="1604831859351">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
-    <state width="2667" height="424" key="GridCell.Tab.0.left/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604830616771" />
-    <state width="2667" height="424" key="GridCell.Tab.0.right" timestamp="1604830616772">
+    <state width="1671" height="424" key="GridCell.Tab.0.left/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604831859351" />
+    <state width="1671" height="424" key="GridCell.Tab.0.right" timestamp="1604831859352">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
-    <state width="2667" height="424" key="GridCell.Tab.0.right/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604830616772" />
+    <state width="1671" height="424" key="GridCell.Tab.0.right/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604831859352" />
     <state width="3189" height="502" key="GridCell.Tab.1.bottom" timestamp="1604775595037">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
@@ -315,10 +316,10 @@
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state width="3189" height="502" key="GridCell.Tab.1.right/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604775595037" />
-    <state x="662" y="464" key="NewPhpClassDialog" timestamp="1604825957039">
+    <state x="662" y="464" key="NewPhpClassDialog" timestamp="1604834798171">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
-    <state x="662" y="464" key="NewPhpClassDialog/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604825957039" />
+    <state x="662" y="464" key="NewPhpClassDialog/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604834798171" />
     <state x="933" y="441" key="RollbackChangesDialog" timestamp="1604768735909">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
@@ -327,10 +328,10 @@
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state x="486" y="370" key="SettingsEditor/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604825870595" />
-    <state x="577" y="471" key="Vcs.Push.Dialog.v2" timestamp="1604776210029">
+    <state x="577" y="471" key="Vcs.Push.Dialog.v2" timestamp="1604832191204">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
-    <state x="577" y="471" key="Vcs.Push.Dialog.v2/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604776210029" />
+    <state x="577" y="471" key="Vcs.Push.Dialog.v2/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604832191204" />
     <state x="2427" y="642" key="WebDeployment.AddServerDialog.v.1" timestamp="1604830470188">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>

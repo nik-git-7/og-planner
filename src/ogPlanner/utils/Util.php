@@ -8,7 +8,7 @@ use ogPlanner\model\Entry;
 
 class Util
 {
-    public static function tableToMap($table): array
+    public static function convertTableToMap($table): array
     {
         $map = [];
 

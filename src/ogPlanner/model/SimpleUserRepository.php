@@ -3,22 +3,19 @@
 
 namespace ogPlanner\model;
 
+require_once 'SimpleUserSchoolClassConnector.php';
+
 
 class SimpleUserRepository implements IUserRepository
 {
     private array $users;
-    private array $userSchoolClasses;
 
     public function __construct()
     {
         $this->users = [
             new User(1, 'haha@miregal.de', 'Nik'),
-        ];
-
-        $this->userSchoolClasses = [
-            '05a' => 1,
-            '05b' => 1,
-            '05c' => 1,
+            new User(2, 'haha@miregal.de', 'Nik'),
+            new User(3, 'haha@miregal.de', 'Nik'),
         ];
     }
 
@@ -50,12 +47,13 @@ class SimpleUserRepository implements IUserRepository
 
     public function findUsersBySchoolClass(string $schoolClass): ?array
     {
-        $cUsers = [];
-        foreach ($this->userSchoolClasses as $c => $userId) {
-            if ($c == $schoolClass) {
-                $cUsers[] = $this->findUserById($userId);
+        $connector = new SimpleUserSchoolClassConnector();
+        $searchedUsers = [];
+        foreach ($connector->getConnections() as $connection) {
+            if ($connection['school_class'] == $schoolClass) {
+                $searchedUsers[] = $this->findUserById($connection['user_id']);
             }
         }
-        return $cUsers;
+        return $searchedUsers;
     }
 }
