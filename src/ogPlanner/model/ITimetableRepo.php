@@ -4,7 +4,7 @@
 namespace ogPlanner\model;
 
 
-interface ITimetablesRepository
+interface ITimetableRepo
 {
     public function getTimetables(): array;
 }

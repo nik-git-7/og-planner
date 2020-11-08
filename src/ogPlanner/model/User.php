@@ -6,8 +6,8 @@ require_once 'IUser.php';
 
 
 /**
- * @ORM\Entity(repositoryClass="UserRepository")
- * @ORM\Table(name="users") // Todo: Add repo annotation
+ * @ORM\Entity(repositoryClass="UserRepo")
+ * @ORM\Table(name="users")
  */
 class User implements IUser
 {

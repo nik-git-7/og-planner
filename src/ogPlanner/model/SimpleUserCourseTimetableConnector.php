@@ -3,10 +3,10 @@
 
 namespace ogPlanner\model;
 
-require_once 'IUserSchoolClassTimetableConnector.php';
+require_once 'IUserCourseTimetableConnector.php';
 
 
-class SimpleUserSchoolClassTimetableConnector implements IUserSchoolClassTimetableConnector
+class SimpleUserCourseTimetableConnector implements IUserCourseTimetableConnector
 {
     private array $connections;
 
@@ -21,7 +21,7 @@ class SimpleUserSchoolClassTimetableConnector implements IUserSchoolClassTimetab
         ];
     }
 
-    public function getConnections(): array
+    public function getConnection(): array
     {
         return $this->connections;
     }

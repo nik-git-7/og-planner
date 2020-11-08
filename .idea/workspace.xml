@@ -20,12 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdd7d7e8-5a52-41c3-a02e-df58c0b7e2b1" name="Default Changelist" comment="added vendor and composer.lock to .gitignore">
-      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/ITimetablesRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleTimetablesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserCourseTimetableConnectorRepo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/UserCourseTimetableConnector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/UserCourseTimetableConnectorRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/og-planner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/og-planner.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/IUserSchoolClassConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserSchoolClassTimetableConnector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserSchoolClassConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserSchoolClassTimetableConnector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/ITimetablesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/ITimetableRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/IUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/IUserSchoolClassTimetableConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserCourseTimetableConnector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/SimpleTimetablesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleTimetableRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserSchoolClassTimetableConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserCourseTimetableConnector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/TableException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/TableException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/UserRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/res/planner_page_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/tests/res/planner_page_1.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +183,7 @@
       <workItem from="1604754133747" duration="3058000" />
       <workItem from="1604766433323" duration="2983000" />
       <workItem from="1604769475844" duration="17110000" />
+      <workItem from="1604841756948" duration="1285000" />
     </task>
     <task id="LOCAL-00001" summary="created niklas branch, started with docker">
       <created>1604765188353</created>
@@ -284,37 +295,44 @@
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state x="797" y="540" key="#com.intellij.fileTypes.FileTypeChooser/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604767167877" />
-    <state x="853" y="420" key="#com.intellij.ide.util.MemberChooser" timestamp="1604838007935">
-      <screen x="55" y="23" width="3385" height="1417" />
+    <state x="453" y="322" width="400" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1604842879599">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="453" y="322" width="400" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604842879599" />
     <state x="853" y="420" key="#com.intellij.ide.util.MemberChooser/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604838007935" />
-    <state x="696" y="520" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1604837905611">
-      <screen x="55" y="23" width="3385" height="1417" />
+    <state x="363" y="412" width="702" height="472" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1604841068246">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="363" y="412" width="702" height="472" key="#com.intellij.ide.util.TreeClassChooserDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604841068246" />
     <state x="696" y="520" key="#com.intellij.ide.util.TreeClassChooserDialog/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604837905611" />
-    <state x="2286" y="338" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604838507919">
-      <screen x="55" y="23" width="3385" height="1417" />
+    <state x="1168" y="261" width="742" height="518" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604841609670">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="1168" y="261" width="742" height="518" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604841609670" />
     <state x="2286" y="338" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604838507919" />
     <state x="715" y="485" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604766165560">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state x="715" y="485" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604766165560" />
-    <state width="1671" height="424" key="GridCell.Tab.0.bottom" timestamp="1604831859352">
-      <screen x="55" y="23" width="3385" height="1417" />
+    <state width="1878" height="298" key="GridCell.Tab.0.bottom" timestamp="1604841744330">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="298" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604841744330" />
     <state width="1671" height="424" key="GridCell.Tab.0.bottom/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604831859352" />
-    <state width="1671" height="424" key="GridCell.Tab.0.center" timestamp="1604831859351">
-      <screen x="55" y="23" width="3385" height="1417" />
+    <state width="1878" height="298" key="GridCell.Tab.0.center" timestamp="1604841744330">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="298" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604841744330" />
     <state width="1671" height="424" key="GridCell.Tab.0.center/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604831859351" />
-    <state width="1671" height="424" key="GridCell.Tab.0.left" timestamp="1604831859351">
-      <screen x="55" y="23" width="3385" height="1417" />
+    <state width="1878" height="298" key="GridCell.Tab.0.left" timestamp="1604841744329">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="298" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604841744329" />
     <state width="1671" height="424" key="GridCell.Tab.0.left/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604831859351" />
-    <state width="1671" height="424" key="GridCell.Tab.0.right" timestamp="1604831859352">
-      <screen x="55" y="23" width="3385" height="1417" />
+    <state width="1878" height="298" key="GridCell.Tab.0.right" timestamp="1604841744330">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="298" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604841744330" />
     <state width="1671" height="424" key="GridCell.Tab.0.right/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604831859352" />
     <state width="3189" height="502" key="GridCell.Tab.1.bottom" timestamp="1604775595037">
       <screen x="55" y="23" width="3385" height="1417" />
@@ -332,9 +350,10 @@
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state width="3189" height="502" key="GridCell.Tab.1.right/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604775595037" />
-    <state x="662" y="464" key="NewPhpClassDialog" timestamp="1604837906978">
-      <screen x="55" y="23" width="3385" height="1417" />
+    <state x="640" y="418" width="581" height="557" key="NewPhpClassDialog" timestamp="1604841193437">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="640" y="418" width="581" height="557" key="NewPhpClassDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604841193437" />
     <state x="662" y="464" key="NewPhpClassDialog/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604837906978" />
     <state x="933" y="441" key="RollbackChangesDialog" timestamp="1604768735909">
       <screen x="55" y="23" width="3385" height="1417" />
@@ -360,6 +379,10 @@
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state x="1441" y="548" key="com.jetbrains.php.test.PhpNewTestDialog/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604772415861" />
+    <state x="1963" y="0" width="1389" height="687" maximized="true" key="dock-window-1" timestamp="1604842062073">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1963" y="0" width="1389" height="687" maximized="true" key="dock-window-1/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604842062073" />
     <state x="983" y="161" width="1133" height="807" key="find.popup" timestamp="1604838460652">
       <screen x="55" y="23" width="3385" height="1417" />
     </state>

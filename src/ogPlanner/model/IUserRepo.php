@@ -4,13 +4,13 @@
 namespace ogPlanner\model;
 
 
-interface IUserRepository
+interface IUserRepo
 {
     public function findUserById(int $id): ?User;
 
-    public function findUserByName(string $username): ?User;
+    public function findUsersByName(string $username): array;
 
-    public function findUserByEmail(string $email): ?User;
+    public function findUsersByEmail(string $email): array;
 
     public function findUsersBySchoolClass(string $class): ?array;
 }

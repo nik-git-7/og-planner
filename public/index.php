@@ -5,8 +5,8 @@ require_once 'doctrine-setup.php';
 require_once BASEDIR . 'src/ogPlanner/model/IEntry.php';
 require_once BASEDIR . 'src/ogPlanner/model/Entry.php';
 require_once BASEDIR . 'src/ogPlanner/model/User.php';
-require_once BASEDIR . 'src/ogPlanner/model/IUserRepository.php';
-require_once BASEDIR . 'src/ogPlanner/model/SimpleUserRepository.php';
+require_once BASEDIR . 'src/ogPlanner/model/IUserRepo.php';
+require_once BASEDIR . 'src/ogPlanner/model/SimpleUserRepo.php';
 
 require_once BASEDIR . 'src/ogPlanner/utils/Util.php';
 require_once BASEDIR . 'src/ogPlanner/utils/OGMailer.php';
@@ -14,8 +14,8 @@ require_once BASEDIR . 'src/ogPlanner/utils/IScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/TableScraper.php';
 
-use ogPlanner\model\IUserRepository;
-use ogPlanner\model\SimpleUserRepository;
+use ogPlanner\model\IUserRepo;
+use ogPlanner\model\SimpleUserRepo;
 use ogPlanner\model\User;
 
 use ogPlanner\utils\OGMailer;
@@ -47,9 +47,9 @@ function main(): int
 
     $map = Util::convertTableToMap($table);
 
-    /** @var IUserRepository $repo */
+    /** @var IUserRepo $repo */
 //    $repo = getEntityManager()->getRepository('User');
-    $repo = new SimpleUserRepository();
+    $repo = new SimpleUserRepo();
     foreach ($map as $schoolClass => $entries) {
         if (!count($entries)) {
             continue;
@@ -66,7 +66,6 @@ function main(): int
             if (!OGMailer::sendEntryMail($user, $entries)) {
                 Util::logToFile('Could not send E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
                     ' with E-Mail ' . $user->getEmail());
-                return EXIT_FAILURE;
             }
         }
     }
@@ -74,4 +73,4 @@ function main(): int
     return EXIT_SUCCESS;
 }
 
-withLogger('Executed with Code: %d', function() {return main();});
+withLogger('Executed with Code: %d', function(): int {return main();});

@@ -3,14 +3,14 @@
 
 namespace ogPlanner\model;
 
-require_once 'ITimetablesRepository.php';
+require_once 'ITimetableRepo.php';
 
-class SimpleTimetablesRepository implements ITimetablesRepository
+class SimpleTimetableRepo implements ITimetableRepo
 {
     private $timetables;
 
     /**
-     * SimpleTimetablesRepository constructor.
+     * SimpleTimetablesRepo constructor.
      */
     public function __construct()
     {
