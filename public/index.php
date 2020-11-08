@@ -15,13 +15,10 @@ require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/TableScraper.php';
 
 use Doctrine\ORM\EntityManager;
+use ogPlanner\model\IUserCourseTimetableConnector;
 use ogPlanner\model\IUserCourseTimetableConnectorRepo;
 use ogPlanner\model\IUserRepo;
-use ogPlanner\model\SimpleUserRepo;
 use ogPlanner\model\User;
-
-use ogPlanner\model\UserCourseTimetableConnector;
-use ogPlanner\model\UserCourseTimetableConnectorRepo;
 use ogPlanner\utils\OGMailer;
 use ogPlanner\utils\OGScraper;
 use ogPlanner\utils\TableScraper;
@@ -44,8 +41,8 @@ function main(): int
     }
 
     // Get table containing entries from website
-    $scraper = new TableScraper(PLANNER_URL);
-    $table = $scraper->scrape();
+    $tableScraper = new TableScraper(PLANNER_URL);
+    $table = $tableScraper->scrape();
     if ($table->isEmpty()) {
         return 3;
     }
@@ -58,8 +55,7 @@ function main(): int
     $entityManager = getEntityManager();
     $connectorRepo = $entityManager->getRepository('UserCourseTimetableConnector');
     $userRepo = $entityManager->getRepository('User');
-
-    // $repo = new SimpleUserRepo();
+    
     foreach ($map as $course => $entries) {
         if (!count($entries)) {
             continue;
@@ -68,7 +64,7 @@ function main(): int
         $connectors = $connectorRepo->findConnectorsByCourse($course);
 
         $users = [];
-        /** @var UserCourseTimetableConnector $connector */
+        /** @var IUserCourseTimetableConnector $connector */
         foreach ($connectors as $connector) {
             if ($connector->getTimetableId() == null) { // There is no timetable, user must be a student in Unterstufe or Mittelstufe
                 $users[] = $userRepo->findUserById($connector->getUserId());
@@ -78,7 +74,7 @@ function main(): int
             }
         }
 
-        if ($users == null) {
+        if ($users == []) {
             continue;
         }
 
