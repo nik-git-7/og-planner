@@ -4,7 +4,7 @@
 namespace ogPlanner\model;
 
 
-interface IUserSchoolClassConnector
+interface IUserSchoolClassTimetableConnector
 {
     public function getConnections(): array;
 }

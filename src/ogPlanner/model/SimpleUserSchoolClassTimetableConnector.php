@@ -3,18 +3,18 @@
 
 namespace ogPlanner\model;
 
-require_once 'IUserSchoolClassConnector.php';
+require_once 'IUserSchoolClassTimetableConnector.php';
 
 
-class SimpleUserSchoolClassConnector implements IUserSchoolClassConnector
+class SimpleUserSchoolClassTimetableConnector implements IUserSchoolClassTimetableConnector
 {
     private array $connections;
 
     public function __construct()
     {
         $this->connections = [
-            ['user_id' => 1, 'school_class' => '05a'],
-            ['user_id' => 1, 'school_class' => '05b'],
+            ['user_id' => 1, 'school_class' => '05a', null],
+            ['user_id' => 1, 'school_class' => '05b', null],
             ['user_id' => 1, 'school_class' => '13'],
             ['user_id' => 2, 'school_class' => '13'],
             ['user_id' => 3, 'school_class' => '13'],

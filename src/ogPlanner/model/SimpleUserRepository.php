@@ -3,7 +3,7 @@
 
 namespace ogPlanner\model;
 
-require_once 'SimpleUserSchoolClassConnector.php';
+require_once 'SimpleUserSchoolClassTimetableConnector.php';
 
 
 class SimpleUserRepository implements IUserRepository
@@ -47,7 +47,7 @@ class SimpleUserRepository implements IUserRepository
 
     public function findUsersBySchoolClass(string $schoolClass): ?array
     {
-        $connector = new SimpleUserSchoolClassConnector();
+        $connector = new SimpleUserSchoolClassTimetableConnector();
         $searchedUsers = [];
         foreach ($connector->getConnections() as $connection) {
             if ($connection['school_class'] == $schoolClass) {
