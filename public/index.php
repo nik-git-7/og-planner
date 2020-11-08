@@ -10,7 +10,7 @@ require_once BASEDIR . 'src/ogPlanner/model/SimpleUserRepo.php';
 
 require_once BASEDIR . 'src/ogPlanner/utils/Util.php';
 require_once BASEDIR . 'src/ogPlanner/utils/OGMailer.php';
-require_once BASEDIR . 'src/ogPlanner/utils/IScraper.php';
+require_once BASEDIR . 'src/ogPlanner/utils/AbstractScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/TableScraper.php';
 
@@ -79,7 +79,7 @@ function main(): int
                 /** @var ITimetableRepo $timetableRepo */
                 /** @var ITimetable $timetables */
                 $timetableRepo = $entityManager->getRepository('Timetable');
-                $timetables = $timetableRepo->findByTimetableIdAndDay($timetableId, $ogScraperData['plan_date']);
+                $timetables = $timetableRepo->findByTimetableIdAndDay($timetableId, $ogScraperData['plan_date']);       // Only get timetables with matching date
 
                 if ($timetables == null) {
                     Util::logToFile('Error 7348754362871365831139: timetables should never be null here!');
@@ -88,10 +88,6 @@ function main(): int
 
                 /** @var ITimetable $timetable */
                 foreach ($timetables as $timetable) {
-                    if ($timetable->getDay() != $ogScraperData['plan_date']) {  // Tag der Vertretung
-                        continue;
-                    }
-
                     // Wie sehen hier $entries aus?
                     /** @var IEntry $entry */
                     foreach ($entries as $entry) {

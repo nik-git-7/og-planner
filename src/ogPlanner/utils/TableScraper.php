@@ -2,7 +2,7 @@
 
 namespace ogPlanner\utils;
 
-require_once 'IScraper.php';
+require_once 'AbstractScraper.php';
 require_once BASEDIR . 'src/ogPlanner/model/Table.php';
 
 use DOMDocument;
@@ -12,7 +12,7 @@ use ogPlanner\model\ITable;
 use ogPlanner\model\Table;
 
 
-class TableScraper implements IScraper
+class TableScraper extends AbstractScraper
 {
     private string $url;
 

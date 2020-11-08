@@ -7,7 +7,7 @@ namespace ogPlanner\utils;
 use DOMDocument;
 use DOMXPath;
 
-class OGScraper implements IScraper
+class OGScraper extends AbstractScraper
 {
 
     private string $url;
