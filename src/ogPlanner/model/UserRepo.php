@@ -20,9 +20,4 @@ class UserRepo extends EntityRepository implements IUserRepo
     {
         return $this->findBy(['email' => $email]);
     }
-
-    public function findUsersBySchoolClass(string $class): array
-    {
-        return $this->findBy(['class' => $class]);
-    }
 }

@@ -11,6 +11,4 @@ interface IUserRepo
     public function findUsersByName(string $username): array;
 
     public function findUsersByEmail(string $email): array;
-
-    public function findUsersBySchoolClass(string $class): ?array;
 }
