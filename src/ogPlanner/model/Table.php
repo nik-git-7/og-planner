@@ -3,6 +3,7 @@
 namespace ogPlanner\model;
 
 require_once 'ITable.php';
+require_once BASEDIR . 'src/ogPlanner/model/TableException.php';
 
 
 class Table implements ITable
@@ -33,14 +34,15 @@ class Table implements ITable
 
     public function getRows(string $key, string $value): array
     {
-        if (!array_search($key, $this->columnNames)) {
+        $index = array_search($key, $this->columnNames);
+        if ($index === false) {
             throw new TableException('Unknown key given');
         }
 
-        $rows = array([]);
+        $rows = [];
         for ($i = 0; $i < count($this->rowData); $i++) {
-            if ($this->rowData[$i][$key] == $value) {
-                $rows[] = $this->rowData[$i][$key];
+            if ($this->rowData[$i][$index] == $value) {
+                $rows[] = $this->rowData[$i];
             }
         }
 
