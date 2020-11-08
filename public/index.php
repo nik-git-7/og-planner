@@ -24,6 +24,7 @@ use ogPlanner\utils\OGScraper;
 use ogPlanner\utils\TableScraper;
 use ogPlanner\utils\Util;
 
+
 function withLogger($msg, $fun): void
 {
     $code = $fun();
@@ -55,7 +56,7 @@ function main(): int
     $entityManager = getEntityManager();
     $connectorRepo = $entityManager->getRepository('UserCourseTimetableConnector');
     $userRepo = $entityManager->getRepository('User');
-    
+
     foreach ($map as $course => $entries) {
         if (!count($entries)) {
             continue;
