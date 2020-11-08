@@ -6,6 +6,7 @@ use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
 
 require_once 'config.php';
+require_once BASEDIR . 'vendor/autoload.php';
 
 
 function getEntityManager(): EntityManager

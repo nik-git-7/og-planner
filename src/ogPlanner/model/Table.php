@@ -15,7 +15,7 @@ class Table implements ITable
      * @param array $rowData
      * @param array $columnNames
      */
-    public function __construct(array $columnNames, array $rowData = array([]))
+    public function __construct(array $columnNames, array $rowData = [])
     {
         $this->columnNames = $columnNames;
         $this->rowData = $rowData;
@@ -26,7 +26,9 @@ class Table implements ITable
      */
     public function addRows(array $rows): void
     {
-        $this->rowData[] = $rows;
+        foreach ($rows as $row) {
+            $this->rowData[] = $row;
+        }
     }
 
     public function getRows(string $key, string $value): array
