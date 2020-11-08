@@ -15,6 +15,9 @@ require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/TableScraper.php';
 
 use Doctrine\ORM\EntityManager;
+use ogPlanner\model\IEntry;
+use ogPlanner\model\ITimetable;
+use ogPlanner\model\ITimetableRepo;
 use ogPlanner\model\IUserCourseTimetableConnector;
 use ogPlanner\model\IUserCourseTimetableConnectorRepo;
 use ogPlanner\model\IUserRepo;
@@ -61,18 +64,45 @@ function main(): int
         if (!count($entries)) {
             continue;
         }
+        $relevantEntries = [];
 
         $connectors = $connectorRepo->findConnectorsByCourse($course);
 
         $users = [];
         /** @var IUserCourseTimetableConnector $connector */
         foreach ($connectors as $connector) {
-            if ($connector->getTimetableId() == null) { // There is no timetable, user must be a student in Unterstufe or Mittelstufe
-                $users[] = $userRepo->findUserById($connector->getUserId());
+            $timetableId = $connector->getTimetableId();
+
+            if ($timetableId == null) { // There is no timetable, user must be a student in Unterstufe or Mittelstufe
+                $relevantEntries = $entries;
             } else { // There is a timetable, user must be a student in Oberstufe
-                // TODO
-                // $entry->getSubject() ==
+                /** @var ITimetableRepo $timetableRepo */
+                /** @var ITimetable $timetables */
+                $timetableRepo = $entityManager->getRepository('Timetable');
+                $timetables = $timetableRepo->findTimetablesByTimetableId($timetableId);
+
+                if ($timetables == null) {
+                    continue;
+                }
+
+                /** @var ITimetable $timetable */
+                foreach ($timetables as $timetable) {
+                    if ($timetable->getDay() != $ogScraperData['plan_date']) {  // Tag der Vertretung
+                        continue;
+                    }
+
+                    // Wie sehen hier $entries aus?
+                    /** @var IEntry $entry */
+                    foreach ($entries as $entry) {
+                        if ($timetables->getLesson() == $entry->getLesson() &&
+                            $timetables->getSubject() == $entry->getSubject()) {    // Vertretung!
+                            $relevantEntries[] = $entry;
+                        }
+                    }
+                }
             }
+
+            $users[] = $userRepo->findUserById($connector->getUserId()); // Füge Schüler zur E-Mail hinzu!
         }
 
         if ($users == []) {
@@ -80,8 +110,8 @@ function main(): int
         }
 
         /** @var User $user */
-        foreach ($users as $user) {
-            if (!OGMailer::sendEntryMail($user, $entries, $ogScraperData['plan_date'])) {
+        foreach ($users as $user) { // Todo: Obersufenschüler müssen nicht zu allen Entries Vertretung haben! man muss die Entries noch filtern! Relevant entries
+            if (!OGMailer::sendEntryMail($user, $relevantEntries, $ogScraperData['plan_date'])) {
                 Util::logToFile('Could not send E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
                     ' with E-Mail ' . $user->getEmail());
             }
@@ -91,4 +121,6 @@ function main(): int
     return EXIT_SUCCESS;
 }
 
-withLogger('Executed with Code: %d', function(): int {return main();});
+withLogger('Executed with Code: %d', function (): int {
+    return main();
+});
