@@ -79,9 +79,10 @@ function main(): int
                 /** @var ITimetableRepo $timetableRepo */
                 /** @var ITimetable $timetables */
                 $timetableRepo = $entityManager->getRepository('Timetable');
-                $timetables = $timetableRepo->findTimetablesByTimetableId($timetableId);
+                $timetables = $timetableRepo->findTimetablesByTimetableIdAndDay($timetableId);
 
                 if ($timetables == null) {
+                    Util::logToFile('Error 7348754362871365831139: timetables should never be null here!');
                     continue;
                 }
 
