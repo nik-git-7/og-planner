@@ -5,6 +5,8 @@ require_once 'bootstrap.php';
 require_once BASEDIR . 'src/ogPlanner/model/IEntry.php';
 require_once BASEDIR . 'src/ogPlanner/model/Entry.php';
 require_once BASEDIR . 'src/ogPlanner/model/User.php';
+require_once BASEDIR . 'src/ogPlanner/model/Timetable.php';
+
 require_once BASEDIR . 'src/ogPlanner/dao/IUserRepo.php';
 // require_once BASEDIR . 'src/ogPlanner/dao/SimpleUserRepo.php';
 
@@ -21,6 +23,7 @@ use ogPlanner\dao\IUserRepo;
 use ogPlanner\model\IEntry;
 use ogPlanner\model\ITimetable;
 use ogPlanner\model\IUserCourseTimetableConnector;
+use ogPlanner\model\Timetable;
 use ogPlanner\model\User;
 use ogPlanner\model\UserCourseTimetableConnector;
 use ogPlanner\utils\OGMailer;
@@ -79,8 +82,11 @@ function main(): int
                 $relevantEntries = $entries;
             } else { // There is a timetable, user must be a student in Oberstufe
                 /** @var ITimetableRepo $timetableRepo */
-                $timetableRepo = $entityManager->getRepository('Timetable');
-                $timetables = $timetableRepo->findByTimetableIdAndDay($timetableId, $ogScraperData['plan_date']);       // Only get timetables with matching date
+                $timetableRepo = $entityManager->getRepository(Timetable::class);
+                $dateParsed = date_parse($ogScraperData['plan_date']);
+                $dateStr = "{$dateParsed['day']}.{$dateParsed['month']}.{$dateParsed['year']}";
+                $dayOfWeek = date('N', strtotime($dateStr)) - 1;
+                $timetables = $timetableRepo->findByTimetableIdAndDay($timetableId, $dayOfWeek);       // Only get timetables with matching date
 
                 if ($timetables == null) {
                     Util::logToFile('Error 7348754362871365831139: timetables should never be null here!');

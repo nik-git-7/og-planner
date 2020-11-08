@@ -57,7 +57,7 @@ class UserCourseTimetableConnector implements IUserCourseTimetableConnector
 
     public function getConnection(): array
     {
-        return ['user_id' => $this->id, 'course' => $this->course, 'timetable_id' => $this->timetableId];
+        return ['userId' => $this->id, 'course' => $this->course, 'timetableId' => $this->timetableId];
     }
 
     /**

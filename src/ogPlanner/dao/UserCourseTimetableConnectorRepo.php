@@ -18,7 +18,7 @@ class UserCourseTimetableConnectorRepo extends EntityRepository implements IUser
 
     public function findByUserId(int $id): array
     {
-        return $this->findBy(['user_id' => $id]);
+        return $this->findBy(['userId' => $id]);
     }
 
     public function findByCourse(string $course): array
@@ -28,6 +28,6 @@ class UserCourseTimetableConnectorRepo extends EntityRepository implements IUser
 
     public function findByTimetableId(int $id): array
     {
-        return $this->findBy(['timetable_id' => $id]);
+        return $this->findBy(['timetableId' => $id]);
     }
 }

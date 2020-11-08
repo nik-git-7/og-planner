@@ -17,12 +17,12 @@ class TimetableRepo extends EntityRepository implements ITimetableRepo
 
     public function findByTimetableId(int $id): array
     {
-        return $this->findBy(['timetable_id' => $id]);
+        return $this->findBy(['timetableId' => $id]);
     }
 
     public function findByTimetableIdAndDay(int $id, int $day): array
     {
-        return $this->findBy(['timetable_id' => $id, 'day' => $day]);
+        return $this->findBy(['timetableId' => $id, 'day' => $day]);
     }
 
     public function findByDay(int $day): array
