@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdd7d7e8-5a52-41c3-a02e-df58c0b7e2b1" name="Default Changelist" comment="added vendor and composer.lock to .gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/utils/OGMailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/utils/OGMailer.php" afterDir="false" />
-    </list>
+    <list default="true" id="bdd7d7e8-5a52-41c3-a02e-df58c0b7e2b1" name="Default Changelist" comment="added vendor and composer.lock to .gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +165,7 @@
       <updated>1604754131341</updated>
       <workItem from="1604754133747" duration="3058000" />
       <workItem from="1604766433323" duration="2983000" />
-      <workItem from="1604769475844" duration="20679000" />
+      <workItem from="1604769475844" duration="20984000" />
     </task>
     <task id="LOCAL-00001" summary="created niklas branch, started with docker">
       <created>1604765188353</created>
@@ -234,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604840724319</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Mail design">
+      <created>1604844425662</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1604844425662</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +265,8 @@
     <MESSAGE value="Bugfixes, especially require_once" />
     <MESSAGE value="Fixed user school class connection through UserSchoolClassConnector-Classes" />
     <MESSAGE value="Introduced Timetables" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduced Timetables" />
+    <MESSAGE value="Mail design" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mail design" />
   </component>
   <component name="WindowStateProjectService">
     <state x="487" y="113" width="799" height="666" key="#Deployment" timestamp="1604841640747">
@@ -354,10 +358,10 @@
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state x="486" y="370" key="SettingsEditor/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604825870595" />
-    <state x="269" y="300" key="Vcs.Push.Dialog.v2" timestamp="1604840962189">
+    <state x="269" y="300" key="Vcs.Push.Dialog.v2" timestamp="1604844427634">
       <screen x="55" y="23" width="1385" height="877" />
     </state>
-    <state x="269" y="300" key="Vcs.Push.Dialog.v2/55.23.1385.877@55.23.1385.877" timestamp="1604840962189" />
+    <state x="269" y="300" key="Vcs.Push.Dialog.v2/55.23.1385.877@55.23.1385.877" timestamp="1604844427634" />
     <state x="577" y="471" key="Vcs.Push.Dialog.v2/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604835880135" />
     <state x="2427" y="642" key="WebDeployment.AddServerDialog.v.1" timestamp="1604830470188">
       <screen x="55" y="23" width="3385" height="1417" />
