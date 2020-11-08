@@ -14,10 +14,14 @@ require_once BASEDIR . 'src/ogPlanner/utils/IScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/TableScraper.php';
 
+use Doctrine\ORM\EntityManager;
+use ogPlanner\model\IUserCourseTimetableConnectorRepo;
 use ogPlanner\model\IUserRepo;
 use ogPlanner\model\SimpleUserRepo;
 use ogPlanner\model\User;
 
+use ogPlanner\model\UserCourseTimetableConnector;
+use ogPlanner\model\UserCourseTimetableConnectorRepo;
 use ogPlanner\utils\OGMailer;
 use ogPlanner\utils\OGScraper;
 use ogPlanner\utils\TableScraper;
@@ -39,23 +43,40 @@ function main(): int
 //        return 2;
     }
 
+    // Get table containing entries from website
     $scraper = new TableScraper(PLANNER_URL);
     $table = $scraper->scrape();
     if ($table->isEmpty()) {
         return 3;
     }
 
-    $map = Util::convertTableToMap($table);
+    $map = Util::convertTableToMap($table); // map[course][entries]
 
-    /** @var IUserRepo $repo */
-//    $repo = getEntityManager()->getRepository('User');
-    $repo = new SimpleUserRepo();
-    foreach ($map as $schoolClass => $entries) {
+    /** @var EntityManager $entityManager */
+    /** @var IUserCourseTimetableConnectorRepo $connectorRepo */
+    /** @var IUserRepo $userRepo */
+    $entityManager = getEntityManager();
+    $connectorRepo = $entityManager->getRepository('UserCourseTimetableConnector');
+    $userRepo = $entityManager->getRepository('User');
+
+    // $repo = new SimpleUserRepo();
+    foreach ($map as $course => $entries) {
         if (!count($entries)) {
             continue;
         }
 
-        $users = $repo->findUsersBySchoolClass($schoolClass);
+        $connectors = $connectorRepo->findConnectorsByCourse($course);
+
+        $users = [];
+        /** @var UserCourseTimetableConnector $connector */
+        foreach ($connectors as $connector) {
+            if ($connector->getTimetableId() == null) { // There is no timetable, user must be a student in Unterstufe or Mittelstufe
+                $users[] = $userRepo->findUserById($connector->getUserId());
+            } else { // There is a timetable, user must be a student in Oberstufe
+                // TODO
+                // $entry->getSubject() ==
+            }
+        }
 
         if ($users == null) {
             continue;

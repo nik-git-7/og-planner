@@ -19,23 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdd7d7e8-5a52-41c3-a02e-df58c0b7e2b1" name="Default Changelist" comment="added vendor and composer.lock to .gitignore">
-      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserCourseTimetableConnectorRepo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/UserCourseTimetableConnector.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ogPlanner/model/UserCourseTimetableConnectorRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/og-planner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/og-planner.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="bdd7d7e8-5a52-41c3-a02e-df58c0b7e2b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/ITimetablesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/ITimetableRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/IUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/IUserSchoolClassTimetableConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserCourseTimetableConnector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/SimpleTimetablesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleTimetableRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserSchoolClassTimetableConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/SimpleUserCourseTimetableConnector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/TableException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/TableException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/UserRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/res/planner_page_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/tests/res/planner_page_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/IUserCourseTimetableConnectorRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/IUserCourseTimetableConnectorRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ogPlanner/model/UserCourseTimetableConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ogPlanner/model/UserCourseTimetableConnector.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +34,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="semperErro &lt;simon_paul58@web.de&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="niklas" />
@@ -183,7 +175,7 @@
       <workItem from="1604754133747" duration="3058000" />
       <workItem from="1604766433323" duration="2983000" />
       <workItem from="1604769475844" duration="17110000" />
-      <workItem from="1604841756948" duration="1285000" />
+      <workItem from="1604841756948" duration="3023000" />
     </task>
     <task id="LOCAL-00001" summary="created niklas branch, started with docker">
       <created>1604765188353</created>
@@ -241,7 +233,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604835878400</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implemented UserCourseTimetableConnector.php">
+      <created>1604843170176</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1604843170176</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Removed findUsersBySchoolClass">
+      <created>1604843234570</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1604843234570</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +274,9 @@
     <MESSAGE value="Test TableScraper.php" />
     <MESSAGE value="Bugfixes, especially require_once" />
     <MESSAGE value="Fixed user school class connection through UserSchoolClassConnector-Classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed user school class connection through UserSchoolClassConnector-Classes" />
+    <MESSAGE value="Implemented UserCourseTimetableConnector.php" />
+    <MESSAGE value="Removed findUsersBySchoolClass" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed findUsersBySchoolClass" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2185" y="398" key="#Deployment" timestamp="1604830573766">
@@ -314,6 +322,10 @@
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state x="715" y="485" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604766165560" />
+    <state x="352" y="114" width="1205" height="886" key="CommitChangelistDialog2" timestamp="1604843234523">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="352" y="114" width="1205" height="886" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604843234523" />
     <state width="1878" height="298" key="GridCell.Tab.0.bottom" timestamp="1604841744330">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -363,9 +375,10 @@
       <screen x="55" y="23" width="3385" height="1417" />
     </state>
     <state x="486" y="370" key="SettingsEditor/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604825870595" />
-    <state x="577" y="471" key="Vcs.Push.Dialog.v2" timestamp="1604835880135">
-      <screen x="55" y="23" width="3385" height="1417" />
+    <state x="296" y="360" width="800" height="562" key="Vcs.Push.Dialog.v2" timestamp="1604843236016">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="296" y="360" width="800" height="562" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604843236016" />
     <state x="577" y="471" key="Vcs.Push.Dialog.v2/874.1463.1440.877/55.23.3385.1417@55.23.3385.1417" timestamp="1604835880135" />
     <state x="2427" y="642" key="WebDeployment.AddServerDialog.v.1" timestamp="1604830470188">
       <screen x="55" y="23" width="3385" height="1417" />

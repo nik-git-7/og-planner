@@ -33,7 +33,7 @@ class UserCourseTimetableConnector implements IUserCourseTimetableConnector
      * @ORM\Column(type="integer")
      * @var int
      */
-    protected int $timetableId;
+    protected ?int $timetableId;
 
     public function __construct($id = false, $userId = false, $course = false, $timetableId = false)
     {
