@@ -2,21 +2,32 @@
 
 require_once 'config.php';
 require_once 'doctrine-setup.php';
+require_once BASEDIR . 'src/ogPlanner/model/IEntry.php';
+require_once BASEDIR . 'src/ogPlanner/model/Entry.php';
+require_once BASEDIR . 'src/ogPlanner/model/User.php';
+require_once BASEDIR . 'src/ogPlanner/model/IUserRepository.php';
+require_once BASEDIR . 'src/ogPlanner/model/SimpleUserRepository.php';
 
-use ogPlanner\model\OGMailer;
-use ogPlanner\model\OGScraper;
-use ogPlanner\model\TableScraper;
+require_once BASEDIR . 'src/ogPlanner/utils/Util.php';
+require_once BASEDIR . 'src/ogPlanner/utils/OGMailer.php';
+require_once BASEDIR . 'src/ogPlanner/utils/IScraper.php';
+require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
+require_once BASEDIR . 'src/ogPlanner/utils/TableScraper.php';
+
+use ogPlanner\model\IUserRepository;
+use ogPlanner\model\SimpleUserRepository;
 use ogPlanner\model\User;
-use ogPlanner\model\UserRepository;
-use ogPlanner\model\Util;
 
-require_once '../../../public/config.php';
+use ogPlanner\utils\OGMailer;
+use ogPlanner\utils\OGScraper;
+use ogPlanner\utils\TableScraper;
+use ogPlanner\utils\Util;
 
-
-function withLogger($fun): void
+function withLogger($msg, $fun): void
 {
     $code = $fun();
-    Util::logToFile('Executed with Code: ' . $code);
+    Util::logToFile(sprintf($msg, $code));
+    echo sprintf($msg, $code);
 }
 
 function main(): int
@@ -25,7 +36,7 @@ function main(): int
     $ogScraperData = $ogScraper->scrape();
 
     if (!Util::updateFileContents($ogScraperData['plan_update'], LAST_UPDATE)) {
-        return 2;
+//        return 2;
     }
 
     $scraper = new TableScraper(PLANNER_URL);
@@ -36,8 +47,9 @@ function main(): int
 
     $map = Util::tableToMap($table);
 
-    /** @var UserRepository $repo */
-    $repo = getEntityManager()->getRepository('User');
+    /** @var IUserRepository $repo */
+//    $repo = getEntityManager()->getRepository('User');
+    $repo = new SimpleUserRepository();
     foreach ($map as $schoolClass => $entries) {
         if (!count($entries)) {
             continue;
@@ -54,6 +66,7 @@ function main(): int
             if (!OGMailer::sendEntryMail($user, $entries)) {
                 Util::logToFile('Could not send E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
                     ' with E-Mail ' . $user->getEmail());
+                return EXIT_FAILURE;
             }
         }
     }
@@ -61,4 +74,4 @@ function main(): int
     return EXIT_SUCCESS;
 }
 
-withLogger(function() {main();});
+withLogger('Executed with Code: %d', function() {return main();});

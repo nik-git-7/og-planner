@@ -10,10 +10,11 @@ define('DB_PASSWORD', '');
 define('DB_NAME', 'first-bootstrap');
 define('DB_DRIVER', 'pdo_mysql');
 
+define('BASEDIR', __DIR__ . '/../');
+
 //define('PLANNER_URL', 'http://vertretungsplan.gym-oppenheim.de/V_DC_001.html');
-define('PLANNER_URL', 'table.html');
+define('PLANNER_URL', BASEDIR . 'tests/res/planner_page_1.html');
 
 define('LOG_FILE', '../var/logfile.log');
 define('LAST_UPDATE', '../var/last_update');
 
-define('BASEDIR', __DIR__ . '/../');

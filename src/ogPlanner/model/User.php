@@ -2,6 +2,9 @@
 
 namespace ogPlanner\model;
 
+require_once 'IUser.php';
+
+
 /**
  * @ORM\Entity(repositoryClass="UserRepository")
  * @ORM\Table(name="users") // Todo: Add repo annotation
@@ -27,6 +30,15 @@ class User implements IUser
      * @var string
      */
     protected string $email;
+
+    public function __construct($id = false, $email = false, $name = false)
+    {
+        if ($id) {
+            $this->id = $id;
+            $this->email = $email;
+            $this->name = $name;
+        }
+    }
 
     public function getEmail(): string
     {

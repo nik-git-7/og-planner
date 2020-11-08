@@ -3,8 +3,6 @@
 
 namespace ogPlanner\utils;
 
-require_once '../../../public/config.php';
-
 use ogPlanner\model\IEntry;
 use ogPlanner\model\IUser;
 

@@ -40,6 +40,6 @@ class Util
         $file = fopen($filename, 'w');
         fwrite($file, $string);
         fclose($file);
-        return false;
+        return true;
     }
 }
