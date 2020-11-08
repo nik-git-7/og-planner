@@ -19,7 +19,7 @@ class SimpleUserRepo implements IUserRepo
         ];
     }
 
-    public function findUserById(int $id): ?User
+    public function findById(int $id): ?User
     {
         foreach ($this->users as $user) {
             if ($user->getId() == $id) {
@@ -30,12 +30,12 @@ class SimpleUserRepo implements IUserRepo
     }
 
     // TODO: multiple users may have the same name, it is not a unique username
-    public function findUsersByName(string $username): ?User
+    public function findByName(string $username): ?User
     {
         return null;
     }
 
-    public function findUsersByEmail(string $email): ?User
+    public function findByEmail(string $email): ?User
     {
         foreach ($this->users as $user) {
             if ($user->getEmail() == $email) {
@@ -51,7 +51,7 @@ class SimpleUserRepo implements IUserRepo
         $searchedUsers = [];
         foreach ($connector->getConnection() as $connection) {
             if ($connection['school_class'] == $schoolClass) {
-                $searchedUsers[] = $this->findUserById($connection['user_id']);
+                $searchedUsers[] = $this->findById($connection['user_id']);
             }
         }
         return $searchedUsers;

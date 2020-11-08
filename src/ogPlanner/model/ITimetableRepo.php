@@ -6,13 +6,15 @@ namespace ogPlanner\model;
 
 interface ITimetableRepo
 {
-    public function findTimetableById(int $id): ?ITimetable;
+    public function findById(int $id): ?ITimetable;
 
-    public function findTimetablesByTimetableId(int $id): array;
+    public function findByTimetableId(int $id): array;
 
-    public function findTimetablesByDay(int $day): array;
+    public function findByDay(int $day): array;
 
-    public function findTimetablesByLesson(int $lesson): array;
+    public function findByLesson(int $lesson): array;
 
-    public function findTimetablesBySubject(string $subject): array;
+    public function findBySubject(string $subject): array;
+
+    public function findByTimetableIdAndDay(int $id, int $day): array;
 }

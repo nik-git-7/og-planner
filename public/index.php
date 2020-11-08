@@ -66,7 +66,7 @@ function main(): int
         }
         $relevantEntries = [];
 
-        $connectors = $connectorRepo->findConnectorsByCourse($course);
+        $connectors = $connectorRepo->findByCourse($course);
 
         $users = [];
         /** @var IUserCourseTimetableConnector $connector */
@@ -79,7 +79,7 @@ function main(): int
                 /** @var ITimetableRepo $timetableRepo */
                 /** @var ITimetable $timetables */
                 $timetableRepo = $entityManager->getRepository('Timetable');
-                $timetables = $timetableRepo->findTimetablesByTimetableIdAndDay($timetableId);
+                $timetables = $timetableRepo->findByTimetableIdAndDay($timetableId, $ogScraperData['plan_date']);
 
                 if ($timetables == null) {
                     Util::logToFile('Error 7348754362871365831139: timetables should never be null here!');
@@ -103,7 +103,7 @@ function main(): int
                 }
             }
 
-            $users[] = $userRepo->findUserById($connector->getUserId()); // Füge Schüler zur E-Mail hinzu!
+            $users[] = $userRepo->findById($connector->getUserId()); // Füge Schüler zur E-Mail hinzu!
         }
 
         if ($users == []) {
