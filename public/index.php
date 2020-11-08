@@ -84,7 +84,7 @@ function main(): int
 
         /** @var User $user */
         foreach ($users as $user) {
-            if (!OGMailer::sendEntryMail($user, $entries)) {
+            if (!OGMailer::sendEntryMail($user, $entries, $ogScraperData['plan_date'])) {
                 Util::logToFile('Could not send E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
                     ' with E-Mail ' . $user->getEmail());
             }
