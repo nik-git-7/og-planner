@@ -4,6 +4,7 @@ namespace ogPlanner\utils;
 
 require_once "../../../public/config.php";
 require_once BASEDIR . "src/ogPlanner/utils/TableScraper.php";
+require_once BASEDIR . 'src/ogPlanner/model/ITable.php';
 
 use ogPlanner\model\ITable;
 use PHPUnit\Framework\TestCase;
@@ -29,6 +30,4 @@ class TableScraperTest extends TestCase
     {
         $this->assertEquals('05a', $this->table->getAllRows()[0][0]);
     }
-
-
 }

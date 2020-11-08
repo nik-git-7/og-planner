@@ -3,8 +3,12 @@
 // Todo: Use Doctrine foreign keys?
 namespace ogPlanner\model;
 
+require_once BASEDIR . 'src/ogPlanner/model/IUserCourseTimetableConnector.php';
+
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @ORM\Entity(repositoryClass="UserCourseTimetableConnectorRepo")
+ * @ORM\Entity(repositoryClass="ogPlanner\dao\UserCourseTimetableConnectorRepo")
  * @ORM\Table(name="user_schoolclass_timetable_connector")
  */
 class UserCourseTimetableConnector implements IUserCourseTimetableConnector
@@ -30,10 +34,10 @@ class UserCourseTimetableConnector implements IUserCourseTimetableConnector
     protected string $course;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"default": 0})
      * @var int
      */
-    protected ?int $timetableId;
+    protected int $timetableId;
 
     public function __construct($id = false, $userId = false, $course = false, $timetableId = false)
     {

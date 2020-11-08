@@ -1,8 +1,12 @@
 <?php /** @noinspection PhpIncompatibleReturnTypeInspection */
 
-namespace ogPlanner\model;
+namespace ogPlanner\dao;
+
+require_once BASEDIR . 'src/ogPlanner/model/User.php';
 
 use Doctrine\ORM\EntityRepository;
+use ogPlanner\model\User;
+
 
 class UserRepo extends EntityRepository implements IUserRepo
 {

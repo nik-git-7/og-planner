@@ -2,6 +2,8 @@
 
 namespace ogPlanner\model;
 
+require_once BASEDIR . 'src/ogPlanner/model/IEntry.php';
+
 class Entry implements IEntry
 {
     protected string $schoolClass;

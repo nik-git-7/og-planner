@@ -4,9 +4,10 @@ namespace ogPlanner\model;
 
 require_once 'IUser.php';
 
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="UserRepo")
+ * @ORM\Entity(repositoryClass="ogPlanner\dao\UserRepo")
  * @ORM\Table(name="users")
  */
 class User implements IUser

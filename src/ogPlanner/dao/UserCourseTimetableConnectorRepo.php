@@ -1,10 +1,13 @@
 <?php /** @noinspection PhpIncompatibleReturnTypeInspection */
 
 
-namespace ogPlanner\model;
+namespace ogPlanner\dao;
 
+require_once BASEDIR . 'src/ogPlanner/model/UserCourseTimetableConnector.php';
 
 use Doctrine\ORM\EntityRepository;
+use ogPlanner\model\UserCourseTimetableConnector;
+
 
 class UserCourseTimetableConnectorRepo extends EntityRepository implements IUserCourseTimetableConnectorRepo
 {

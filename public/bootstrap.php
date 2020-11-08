@@ -11,12 +11,11 @@ require_once BASEDIR . 'vendor/autoload.php';
 
 function getEntityManager(): EntityManager
 {
-// Todo: Check config
     $isDevMode = true;
     $proxyDir = null;
     $cache = null;
     $useSimpleAnnotationReader = false;
-    $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . '/src'), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
+    $config = Setup::createAnnotationMetadataConfiguration(array(BASEDIR . '/src'), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
 
     $connectionParams = array(
         'dbname' => DB_NAME,

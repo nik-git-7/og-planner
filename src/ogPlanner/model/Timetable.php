@@ -3,8 +3,12 @@
 
 namespace ogPlanner\model;
 
+require_once BASEDIR . 'src/ogPlanner/model/ITimetable.php';
+
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @ORM\Entity(repositoryClass="TimetableRepo")
+ * @ORM\Entity(repositoryClass="ogPlanner\dao\TimetableRepo")
  * @ORM\Table(name="timetable")
  */
 class Timetable implements ITimetable

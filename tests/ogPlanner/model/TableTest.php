@@ -5,11 +5,12 @@ namespace ogPlanner\model;
 use PHPUnit\Framework\TestCase;
 
 require_once '../../../public/config.php';
+require_once BASEDIR . 'src/ogPlanner/model/ITable.php';
 
 
 class TableTest extends TestCase
 {
-    private Table $table;
+    private ITable $table;
     private array $headerNames;
 
     public function setUp(): void

@@ -1,8 +1,11 @@
 <?php
 
 
-namespace ogPlanner\model;
+namespace ogPlanner\dao;
 
+require_once BASEDIR . 'src/ogPlanner/model/ITimetable.php';
+
+use ogPlanner\model\ITimetable;
 
 interface ITimetableRepo
 {

@@ -1,12 +1,12 @@
 <?php
 
 require_once 'config.php';
-require_once 'doctrine-setup.php';
+require_once 'bootstrap.php';
 require_once BASEDIR . 'src/ogPlanner/model/IEntry.php';
 require_once BASEDIR . 'src/ogPlanner/model/Entry.php';
 require_once BASEDIR . 'src/ogPlanner/model/User.php';
-require_once BASEDIR . 'src/ogPlanner/model/IUserRepo.php';
-require_once BASEDIR . 'src/ogPlanner/model/SimpleUserRepo.php';
+require_once BASEDIR . 'src/ogPlanner/dao/IUserRepo.php';
+// require_once BASEDIR . 'src/ogPlanner/dao/SimpleUserRepo.php';
 
 require_once BASEDIR . 'src/ogPlanner/utils/Util.php';
 require_once BASEDIR . 'src/ogPlanner/utils/OGMailer.php';
@@ -15,13 +15,14 @@ require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/TableScraper.php';
 
 use Doctrine\ORM\EntityManager;
+use ogPlanner\dao\ITimetableRepo;
+use ogPlanner\dao\IUserCourseTimetableConnectorRepo;
+use ogPlanner\dao\IUserRepo;
 use ogPlanner\model\IEntry;
 use ogPlanner\model\ITimetable;
-use ogPlanner\model\ITimetableRepo;
 use ogPlanner\model\IUserCourseTimetableConnector;
-use ogPlanner\model\IUserCourseTimetableConnectorRepo;
-use ogPlanner\model\IUserRepo;
 use ogPlanner\model\User;
+use ogPlanner\model\UserCourseTimetableConnector;
 use ogPlanner\utils\OGMailer;
 use ogPlanner\utils\OGScraper;
 use ogPlanner\utils\TableScraper;
@@ -57,8 +58,9 @@ function main(): int
     /** @var IUserCourseTimetableConnectorRepo $connectorRepo */
     /** @var IUserRepo $userRepo */
     $entityManager = getEntityManager();
-    $connectorRepo = $entityManager->getRepository('UserCourseTimetableConnector');
-    $userRepo = $entityManager->getRepository('User');
+    echo UserCourseTimetableConnector::class;
+    $connectorRepo = $entityManager->getRepository(UserCourseTimetableConnector::class);
+    $userRepo = $entityManager->getRepository(User::class);
 
     foreach ($map as $course => $entries) {
         if (!count($entries)) {
@@ -68,16 +70,15 @@ function main(): int
 
         $connectors = $connectorRepo->findByCourse($course);
 
-        $users = [];
+        $emailUsers = [];
         /** @var IUserCourseTimetableConnector $connector */
         foreach ($connectors as $connector) {
             $timetableId = $connector->getTimetableId();
 
-            if ($timetableId == null) { // There is no timetable, user must be a student in Unterstufe or Mittelstufe
+            if ($timetableId == 0) { // There is no timetable, user must be a student in Unterstufe or Mittelstufe
                 $relevantEntries = $entries;
             } else { // There is a timetable, user must be a student in Oberstufe
                 /** @var ITimetableRepo $timetableRepo */
-                /** @var ITimetable $timetables */
                 $timetableRepo = $entityManager->getRepository('Timetable');
                 $timetables = $timetableRepo->findByTimetableIdAndDay($timetableId, $ogScraperData['plan_date']);       // Only get timetables with matching date
 
@@ -91,24 +92,27 @@ function main(): int
                     // Wie sehen hier $entries aus?
                     /** @var IEntry $entry */
                     foreach ($entries as $entry) {
-                        if ($timetables->getLesson() == $entry->getLesson() &&
-                            $timetables->getSubject() == $entry->getSubject()) {    // Vertretung!
+                        if ($timetable->getLesson() == $entry->getLesson() &&
+                            $timetable->getSubject() == $entry->getSubject()) {    // Vertretung!
                             $relevantEntries[] = $entry;
                         }
                     }
                 }
             }
 
-            $users[] = $userRepo->findById($connector->getUserId()); // Füge Schüler zur E-Mail hinzu!
+            $emailUsers[] = $userRepo->findById($connector->getUserId()); // Füge Schüler zur E-Mail hinzu!
         }
 
-        if ($users == []) {
+        if ($emailUsers == []) {
             continue;
         }
 
         /** @var User $user */
-        foreach ($users as $user) { // Todo: Obersufenschüler müssen nicht zu allen Entries Vertretung haben! man muss die Entries noch filtern! Relevant entries
-            if (!OGMailer::sendEntryMail($user, $relevantEntries, $ogScraperData['plan_date'])) {
+        foreach ($emailUsers as $user) { // Todo: Obersufenschüler müssen nicht zu allen Entries Vertretung haben! man muss die Entries noch filtern! Relevant entries
+            if (OGMailer::sendEntryMail($user, $relevantEntries, $ogScraperData['plan_date'])) {
+                Util::logToFile('Successfully sent E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
+                    ' with E-Mail ' . $user->getEmail());
+            } else {
                 Util::logToFile('Could not send E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
                     ' with E-Mail ' . $user->getEmail());
             }
