@@ -32,6 +32,12 @@ class User implements IUser
      */
     protected string $email;
 
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    protected int $notificationId;
+
     public function __construct($id = false, $email = false, $name = false)
     {
         if ($id) {
