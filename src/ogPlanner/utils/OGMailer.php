@@ -2,6 +2,7 @@
 
 namespace ogPlanner\utils;
 
+use Config;
 use ogPlanner\model\IEntry;
 use ogPlanner\model\IUser;
 
@@ -55,7 +56,7 @@ class OGMailer
                             </tr>";
         }
 
-        $plannerUrl = PLANNER_URL;
+        $plannerUrl = Config::PLANNER_URL;
         $content .= '</table>';
         $content .= "<p>Für die Richtigkeit dieser Angaben übernehmen wir keine Haftung.
                         Bitte prüfe auf <a href='{$plannerUrl}'>{$plannerUrl}</a>,

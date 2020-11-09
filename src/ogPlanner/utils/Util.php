@@ -2,6 +2,7 @@
 
 namespace ogPlanner\utils;
 
+use Config;
 use ogPlanner\model\Entry;
 
 
@@ -21,7 +22,7 @@ class Util
 
     public static function logToFile(string $logMessage): void
     {
-        $file = fopen(LOG_FILE, 'a');
+        $file = fopen(Config::LOG_FILE, 'a');
         fwrite($file, $logMessage . "\r\n\r\n");
         fclose($file);
     }

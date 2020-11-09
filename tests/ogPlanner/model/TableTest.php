@@ -4,9 +4,6 @@ namespace ogPlanner\model;
 
 use PHPUnit\Framework\TestCase;
 
-require_once '../../../config/config.php';
-require_once BASEDIR . 'src/ogPlanner/model/ITable.php';
-
 
 class TableTest extends TestCase
 {

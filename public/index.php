@@ -1,6 +1,6 @@
 <?php
 
-require_once '../config/config.php';
+require_once '../vendor/autoload.php';
 
 use Doctrine\ORM\EntityManager;
 use ogPlanner\dao\ITimetableRepo;
@@ -27,15 +27,15 @@ function withLogger($msg, $fun): void
 
 function main(): int
 {
-    $ogScraper = new OGScraper(PLANNER_URL);
+    $ogScraper = new OGScraper(Config::PLANNER_URL);
     $ogScraperData = $ogScraper->scrape();
 
-    if (!Util::updateFileContents($ogScraperData['plan_update'], LAST_UPDATE)) {
+    if (!Util::updateFileContents($ogScraperData['plan_update'], Config::LAST_UPDATE)) {
 //        return 2;
     }
 
     // Get table containing entries from website
-    $tableScraper = new TableScraper(PLANNER_URL);
+    $tableScraper = new TableScraper(Config::PLANNER_URL);
     $table = $tableScraper->scrape();
     if ($table->isEmpty()) {
         return 3;
@@ -46,7 +46,7 @@ function main(): int
     /** @var EntityManager $entityManager */
     /** @var IUserCourseTimetableConnectorRepo $connectorRepo */
     /** @var IUserRepo $userRepo */
-    $entityManager = getEntityManager();
+    $entityManager = Config::getEntityManager();
     $connectorRepo = $entityManager->getRepository(UserCourseTimetableConnector::class);
     $userRepo = $entityManager->getRepository(User::class);
 
@@ -109,7 +109,7 @@ function main(): int
         }
     }
 
-    return EXIT_SUCCESS;
+    return Config::EXIT_SUCCESS;
 }
 
 withLogger('Executed with Code: %d', function (): int {

@@ -2,12 +2,10 @@
 
 namespace ogPlanner\utils;
 
-require_once "../../../config/config.php";
-require_once BASEDIR . "src/ogPlanner/utils/TableScraper.php";
-require_once BASEDIR . 'src/ogPlanner/model/ITable.php';
-
+use Config;
 use ogPlanner\model\ITable;
 use PHPUnit\Framework\TestCase;
+
 
 class TableScraperTest extends TestCase
 {
@@ -16,7 +14,7 @@ class TableScraperTest extends TestCase
 
     public function setUp(): void
     {
-        $tableScraper = new TableScraper(BASEDIR . "tests/res/planner_page_1.html");
+        $tableScraper = new TableScraper(Config::BASEDIR . "tests/res/planner_page_1.html");
         $this->table = $tableScraper->scrape();
     }
 

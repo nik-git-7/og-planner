@@ -2,11 +2,9 @@
 
 namespace ogPlanner\utils;
 
-require_once "../../../config/config.php";
-require_once BASEDIR . 'src/ogPlanner/utils/AbstractScraper.php';
-require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
-
+use Config;
 use PHPUnit\Framework\TestCase;
+
 
 class OGScraperTest extends TestCase
 {
@@ -15,7 +13,7 @@ class OGScraperTest extends TestCase
 
     public function setUp(): void
     {
-        $this->ogScraper = new OGScraper(BASEDIR . "tests/res/planner_page_1.html");
+        $this->ogScraper = new OGScraper(Config::BASEDIR . "tests/res/planner_page_1.html");
     }
 
     public function testScrape()
