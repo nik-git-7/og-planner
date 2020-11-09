@@ -3,7 +3,7 @@
 namespace ogPlanner\model;
 
 
-interface ITimetable
+interface ILesson
 {
     public function getId(): int;
 
@@ -11,7 +11,7 @@ interface ITimetable
 
     public function getDay(): int;
 
-    public function getLesson(): int;
+    public function getPosition(): int;
 
     public function getSubject(): string;
 }

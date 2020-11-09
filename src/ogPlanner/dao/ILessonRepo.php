@@ -2,18 +2,18 @@
 
 namespace ogPlanner\dao;
 
-use ogPlanner\model\ITimetable;
+use ogPlanner\model\ILesson;
 
 
-interface ITimetableRepo
+interface ILessonRepo
 {
-    public function findById(int $id): ?ITimetable;
+    public function findById(int $id): ?ILesson;
 
     public function findByTimetableId(int $id): array;
 
     public function findByDay(int $day): array;
 
-    public function findByLesson(int $lesson): array;
+    public function findByPosition(int $position): array;
 
     public function findBySubject(string $subject): array;
 

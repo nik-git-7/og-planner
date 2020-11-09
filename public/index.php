@@ -3,13 +3,13 @@
 require_once '../vendor/autoload.php';
 
 use Doctrine\ORM\EntityManager;
-use ogPlanner\dao\ITimetableRepo;
+use ogPlanner\dao\ILessonRepo;
 use ogPlanner\dao\IUserCourseTimetableConnectorRepo;
 use ogPlanner\dao\IUserRepo;
 use ogPlanner\model\IEntry;
-use ogPlanner\model\ITimetable;
+use ogPlanner\model\ILesson;
 use ogPlanner\model\IUserCourseTimetableConnector;
-use ogPlanner\model\Timetable;
+use ogPlanner\model\Lesson;
 use ogPlanner\model\User;
 use ogPlanner\model\UserCourseTimetableConnector;
 use ogPlanner\utils\OGMailer;
@@ -66,8 +66,8 @@ function main(): int
             if ($timetableId == 0) { // There is no timetable, user must be a student in Unterstufe or Mittelstufe
                 $relevantEntries = $entries;
             } else { // There is a timetable, user must be a student in Oberstufe
-                /** @var ITimetableRepo $timetableRepo */
-                $timetableRepo = $entityManager->getRepository(Timetable::class);
+                /** @var ILessonRepo $timetableRepo */
+                $timetableRepo = $entityManager->getRepository(Lesson::class);
                 $dateParsed = date_parse($ogScraperData['plan_date']);
                 $dateStr = "{$dateParsed['day']}.{$dateParsed['month']}.{$dateParsed['year']}";
                 $dayOfWeek = date('N', strtotime($dateStr)) - 1;
@@ -77,12 +77,12 @@ function main(): int
                     continue;
                 }
 
-                /** @var ITimetable $dayTimetable */
+                /** @var ILesson $dayTimetable */
                 foreach ($dayTimetables as $dayTimetable) {
                     // Wie sehen hier $entries aus?
                     /** @var IEntry $entry */
                     foreach ($entries as $entry) {
-                        if ($dayTimetable->getLesson() == $entry->getLesson() &&
+                        if ($dayTimetable->getPosition() == $entry->getPosition() &&
                             $dayTimetable->getSubject() == $entry->getSubject()) {    // Vertretung!
                             $relevantEntries[] = $entry;
                         }

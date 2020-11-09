@@ -7,7 +7,7 @@ interface IEntry
 {
     public function getSchoolClass(): string;
 
-    public function getLesson(): int;
+    public function getPosition(): int;
 
     public function getRepresentative(): string;
 

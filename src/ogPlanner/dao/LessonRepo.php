@@ -3,12 +3,12 @@
 namespace ogPlanner\dao;
 
 use Doctrine\ORM\EntityRepository;
-use ogPlanner\model\ITimetable;
+use ogPlanner\model\ILesson;
 
 
-class TimetableRepo extends EntityRepository implements ITimetableRepo
+class LessonRepo extends EntityRepository implements ILessonRepo
 {
-    public function findById(int $id): ?ITimetable
+    public function findById(int $id): ?ILesson
     {
         return $this->find($id);
     }
@@ -28,9 +28,9 @@ class TimetableRepo extends EntityRepository implements ITimetableRepo
         return $this->findBy(['day' => $day]);
     }
 
-    public function findByLesson(int $lesson): array
+    public function findByPosition(int $position): array
     {
-        return $this->findBy(['lesson' => $lesson]);
+        return $this->findBy(['lesson' => $position]);
     }
 
     public function findBySubject(string $subject): array

@@ -14,4 +14,6 @@ interface IUserRepo
     public function findByEmail(string $email): array;
 
     public function findByNotificationId(int $id): array;
+
+    public function findAll(): array;
 }

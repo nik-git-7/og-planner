@@ -27,4 +27,9 @@ class UserRepo extends EntityRepository implements IUserRepo
     {
         return $this->findBy(['notificationId' => $id]);
     }
+
+    public function findAll(): array
+    {
+        return parent::findAll();
+    }
 }

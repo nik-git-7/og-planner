@@ -6,7 +6,7 @@ namespace ogPlanner\model;
 class Entry implements IEntry
 {
     protected string $schoolClass;
-    protected int $lesson;
+    protected int $position;
     protected string $representative;
     protected string $subject;
     protected string $room;
@@ -16,17 +16,17 @@ class Entry implements IEntry
     /**
      * Entry constructor.
      * @param string $schoolClass
-     * @param int $lesson
+     * @param int $position
      * @param string $representative
      * @param string $subject
      * @param string $room
      * @param string $kind
      * @param string $notification
      */
-    public function __construct(string $schoolClass, int $lesson, string $representative, string $subject, string $room, string $kind, string $notification)
+    public function __construct(string $schoolClass, int $position, string $representative, string $subject, string $room, string $kind, string $notification)
     {
         $this->schoolClass = $schoolClass;
-        $this->lesson = $lesson;
+        $this->position = $position;
         $this->representative = $representative;
         $this->subject = $subject;
         $this->room = $room;
@@ -45,9 +45,9 @@ class Entry implements IEntry
     /**
      * @return int
      */
-    public function getLesson(): int
+    public function getPosition(): int
     {
-        return $this->lesson;
+        return $this->position;
     }
 
     /**

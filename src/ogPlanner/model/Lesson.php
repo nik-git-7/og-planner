@@ -6,10 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
- * @ORM\Entity(repositoryClass="ogPlanner\dao\TimetableRepo")
- * @ORM\Table(name="timetables")
+ * @ORM\Entity(repositoryClass="ogPlanner\dao\LessonRepo")
+ * @ORM\Table(name="lessons")
  */
-class Timetable implements ITimetable
+class Lesson implements ILesson
 {
     const MONDAY = 0;
     const TUESDAY = 1;
@@ -95,7 +95,7 @@ class Timetable implements ITimetable
     /**
      * @return int
      */
-    public function getLesson(): int
+    public function getPosition(): int
     {
         return $this->lesson;
     }
