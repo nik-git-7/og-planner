@@ -1,12 +1,10 @@
 <?php /** @noinspection PhpIncompatibleReturnTypeInspection */
 
-
 namespace ogPlanner\dao;
-
-require_once BASEDIR . 'src/ogPlanner/model/ITimetable.php';
 
 use Doctrine\ORM\EntityRepository;
 use ogPlanner\model\ITimetable;
+
 
 class TimetableRepo extends EntityRepository implements ITimetableRepo
 {

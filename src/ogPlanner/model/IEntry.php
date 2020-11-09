@@ -2,6 +2,7 @@
 
 namespace ogPlanner\model;
 
+
 interface IEntry
 {
     public function getSchoolClass(): string;

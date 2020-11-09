@@ -1,10 +1,9 @@
 <?php
 
-
 namespace ogPlanner\utils;
 
-
 use DOMXPath;
+
 
 class OGScraper extends AbstractScraper
 {

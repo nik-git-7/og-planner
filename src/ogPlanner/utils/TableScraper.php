@@ -2,9 +2,6 @@
 
 namespace ogPlanner\utils;
 
-require_once 'AbstractScraper.php';
-require_once BASEDIR . 'src/ogPlanner/model/Table.php';
-
 use DOMNode;
 use DOMXPath;
 use ogPlanner\model\Table;

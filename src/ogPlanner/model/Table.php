@@ -2,9 +2,6 @@
 
 namespace ogPlanner\model;
 
-require_once 'ITable.php';
-require_once BASEDIR . 'src/ogPlanner/model/TableException.php';
-
 
 class Table implements ITable
 {

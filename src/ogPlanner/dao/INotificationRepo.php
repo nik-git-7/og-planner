@@ -1,10 +1,9 @@
 <?php
 
-
 namespace ogPlanner\dao;
 
-
 use ogPlanner\model\Notification;
+
 
 interface INotificationRepo
 {

@@ -1,20 +1,6 @@
 <?php
 
 require_once '../config/config.php';
-require_once '../config/bootstrap.php';
-require_once BASEDIR . 'src/ogPlanner/model/IEntry.php';
-require_once BASEDIR . 'src/ogPlanner/model/Entry.php';
-require_once BASEDIR . 'src/ogPlanner/model/User.php';
-require_once BASEDIR . 'src/ogPlanner/model/Timetable.php';
-
-require_once BASEDIR . 'src/ogPlanner/dao/IUserRepo.php';
-// require_once BASEDIR . 'src/ogPlanner/dao/SimpleUserRepo.php';
-
-require_once BASEDIR . 'src/ogPlanner/utils/Util.php';
-require_once BASEDIR . 'src/ogPlanner/utils/OGMailer.php';
-require_once BASEDIR . 'src/ogPlanner/utils/AbstractScraper.php';
-require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
-require_once BASEDIR . 'src/ogPlanner/utils/TableScraper.php';
 
 use Doctrine\ORM\EntityManager;
 use ogPlanner\dao\ITimetableRepo;

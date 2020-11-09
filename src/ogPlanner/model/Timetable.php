@@ -1,11 +1,9 @@
 <?php
 
-
 namespace ogPlanner\model;
 
-require_once BASEDIR . 'src/ogPlanner/model/ITimetable.php';
-
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * @ORM\Entity(repositoryClass="ogPlanner\dao\TimetableRepo")

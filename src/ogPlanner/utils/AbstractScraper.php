@@ -5,6 +5,7 @@ namespace ogPlanner\utils;
 use DOMDocument;
 use DOMXPath;
 
+
 abstract class AbstractScraper
 {
     private string $url;

@@ -4,6 +4,7 @@ namespace ogPlanner\model;
 
 use RuntimeException;
 
+
 class TableException extends RuntimeException
 {
     /**

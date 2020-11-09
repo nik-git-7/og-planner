@@ -2,9 +2,8 @@
 
 namespace ogPlanner\model;
 
-require_once 'IUser.php';
-
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * @ORM\Entity(repositoryClass="ogPlanner\dao\UserRepo")
@@ -33,7 +32,7 @@ class User implements IUser
     protected string $email;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"default": 1})
      * @var int
      */
     protected int $notificationId;

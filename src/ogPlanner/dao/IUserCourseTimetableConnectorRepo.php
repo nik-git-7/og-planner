@@ -1,11 +1,9 @@
 <?php
 
-
 namespace ogPlanner\dao;
 
-require_once BASEDIR . 'src/ogPlanner/model/UserCourseTimetableConnector.php';
-
 use ogPlanner\model\UserCourseTimetableConnector;
+
 
 interface IUserCourseTimetableConnectorRepo
 {

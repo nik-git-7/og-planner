@@ -1,10 +1,6 @@
 <?php
 
-
 namespace ogPlanner\utils;
-
-require_once BASEDIR . 'src/ogPlanner/model/IEntry.php';
-require_once BASEDIR . 'src/ogPlanner/model/Entry.php';
 
 use ogPlanner\model\Entry;
 

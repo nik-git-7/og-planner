@@ -2,6 +2,7 @@
 
 namespace ogPlanner\model;
 
+
 interface ITable
 {
     public function addRows(array $rows): void;

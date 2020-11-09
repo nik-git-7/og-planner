@@ -1,11 +1,9 @@
 <?php
 
-
 namespace ogPlanner\model;
 
-require_once BASEDIR . 'src/ogPlanner/model/INotification.php';
-
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Class Notification

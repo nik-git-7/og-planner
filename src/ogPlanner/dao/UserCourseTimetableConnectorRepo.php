@@ -1,9 +1,6 @@
 <?php /** @noinspection PhpIncompatibleReturnTypeInspection */
 
-
 namespace ogPlanner\dao;
-
-require_once BASEDIR . 'src/ogPlanner/model/UserCourseTimetableConnector.php';
 
 use Doctrine\ORM\EntityRepository;
 use ogPlanner\model\UserCourseTimetableConnector;

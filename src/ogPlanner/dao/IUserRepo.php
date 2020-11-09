@@ -1,11 +1,9 @@
 <?php
 
-
 namespace ogPlanner\dao;
 
-require_once BASEDIR . 'src/ogPlanner/model/User.php';
-
 use ogPlanner\model\User;
+
 
 interface IUserRepo
 {

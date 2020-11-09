@@ -1,12 +1,10 @@
 <?php
 
-// Todo: Use Doctrine foreign keys?
 namespace ogPlanner\model;
-
-require_once BASEDIR . 'src/ogPlanner/model/IUserCourseTimetableConnector.php';
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
+
 
 /**
  * @ORM\Entity(repositoryClass="ogPlanner\dao\UserCourseTimetableConnectorRepo")

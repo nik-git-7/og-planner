@@ -2,6 +2,7 @@
 
 namespace ogPlanner\model;
 
+
 interface IUser
 {
     public function getId(): int;

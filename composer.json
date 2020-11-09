@@ -4,12 +4,9 @@
     "ext-dom": "*"
   },
   "autoload": {
-    "psr-0": {
-      "": ""
-    },
-    "classmap": [
-      "src/"
-    ]
+    "psr-4": {
+      "ogPlanner\\": "src/ogPlanner/"
+    }
   },
   "require-dev": {
     "phpunit/phpunit": "^9"

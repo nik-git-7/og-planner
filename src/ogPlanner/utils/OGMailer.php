@@ -1,13 +1,10 @@
 <?php
 
-
 namespace ogPlanner\utils;
-
-require_once BASEDIR . 'src/ogPlanner/model/IEntry.php';
-require_once BASEDIR . 'src/ogPlanner/model/IUser.php';
 
 use ogPlanner\model\IEntry;
 use ogPlanner\model\IUser;
+
 
 class OGMailer
 {
