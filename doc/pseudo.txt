@@ -1,0 +1,37 @@
+Function main() {
+
+    Entry = (lesson, subject)
+    Array<course => Array<Entry>> map = ...
+    string pageDate = ...
+    int day = dateToDay(pageDate)
+
+    Foreach(users As user) {
+        Array<Entry> mailEntries;
+
+        Array<(userId, course, timetableId)> ucts = findByUserId(user.id)
+
+        Foreach(ucts As uct) {
+            if (!array_key_exists(uct.course, map) {
+                continue
+            }
+            Array courseEntries = map[uct.course]
+
+            if (uct.timetableId == 0) {
+                mailEntries.addAll(courseEntries)
+            } else {
+                Array<(lesson, subject)> dayLessons = findDayLessonsByIdAndDay(uct.timetableId, day)
+                Foreach(dayLessons As dayLesson) {
+                    Foreach(courseEntries AS entry {
+                        if (dayLesson.lesson == entry.lesson And dayLesson.subject == entry.subject) {
+                            mailEntries.add(entry)
+                        }
+                    }
+                }
+            }
+        }
+
+        if (mailEntries.length != null) {
+            sendMail(user, entries, pageDate)
+        }
+    }
+}
