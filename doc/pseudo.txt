@@ -8,18 +8,23 @@ Function main() {
     Foreach(users As user) {
         Array<Entry> mailEntries;
 
-        Array<(userId, course, timetableId)> ucts = findUctsByUserId(user.id)
+        Array<(userId, course, timetableId)> ucts = findByUserId(user.id)
 
         Foreach(ucts As uct) {
-            Array courseEntries = getEntriesByCourse(map, course)
+            if (!array_key_exists(uct.course, map) {
+                continue
+            }
+            Array courseEntries = map[uct.course]
 
             if (uct.timetableId == 0) {
                 mailEntries.addAll(courseEntries)
             } else {
-                (lesson, subject) dayTimetable = findTimetablesByIdAndDay(uct.timetableId, day)
-                Foreach(courseEntries AS entry {
-                    if (dayTimetable.lesson == entry.lesson And dayTimetable.subject == entry.subject) {
-                        mailEntries.add(entry)
+                Array<(lesson, subject)> dayLessons = findDayLessonsByIdAndDay(uct.timetableId, day)
+                Foreach(dayLessons As dayLesson) {
+                    Foreach(courseEntries AS entry {
+                        if (dayLesson.lesson == entry.lesson And dayLesson.subject == entry.subject) {
+                            mailEntries.add(entry)
+                        }
                     }
                 }
             }
@@ -29,14 +34,4 @@ Function main() {
             sendMail(user, entries, pageDate)
         }
     }
-}
-
-Function getEntriesByCourse(map, sc) {
-    Array re
-    Foreach(map As course => entries) {
-        if (course == sc) {
-            entries.addAll(entries)
-        }
-    }
-    return re
 }
