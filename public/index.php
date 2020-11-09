@@ -1,7 +1,7 @@
 <?php
 
-require_once 'config.php';
-require_once 'bootstrap.php';
+require_once '../config/config.php';
+require_once '../config/bootstrap.php';
 require_once BASEDIR . 'src/ogPlanner/model/IEntry.php';
 require_once BASEDIR . 'src/ogPlanner/model/Entry.php';
 require_once BASEDIR . 'src/ogPlanner/model/User.php';

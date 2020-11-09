@@ -10,7 +10,7 @@ define('DB_PASSWORD', '');
 define('DB_NAME', 'og-db');
 define('DB_DRIVER', 'pdo_mysql');
 // vendor/bin/doctrine orm:schema-tool:create
-define('BASEDIR', __DIR__ . '/../');
+define('BASEDIR', __DIR__ . '../');
 
 define('PLANNER_URL', 'http://vertretungsplan.gym-oppenheim.de/V_DC_001.html');
 //define('PLANNER_URL', BASEDIR . 'tests/res/planner_page_1.html');

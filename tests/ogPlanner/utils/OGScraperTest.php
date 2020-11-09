@@ -2,7 +2,7 @@
 
 namespace ogPlanner\utils;
 
-require_once "../../../public/config.php";
+require_once "../../../config/config.php";
 require_once BASEDIR . 'src/ogPlanner/utils/AbstractScraper.php';
 require_once BASEDIR . 'src/ogPlanner/utils/OGScraper.php';
 

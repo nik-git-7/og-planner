@@ -2,7 +2,7 @@
 
 namespace ogPlanner\utils;
 
-require_once "../../../public/config.php";
+require_once "../../../config/config.php";
 require_once BASEDIR . "src/ogPlanner/utils/TableScraper.php";
 require_once BASEDIR . 'src/ogPlanner/model/ITable.php';
 
