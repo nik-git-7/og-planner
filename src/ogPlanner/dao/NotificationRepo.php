@@ -3,6 +3,8 @@
 
 namespace ogPlanner\dao;
 
+require_once BASEDIR . 'src/ogPlanner/dao/INotificationRepo.php';
+require_once BASEDIR . 'src/ogPlanner/model/Notification.php';
 
 use Doctrine\ORM\EntityRepository;
 use ogPlanner\model\Notification;

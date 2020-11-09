@@ -3,6 +3,7 @@
 
 namespace ogPlanner\model;
 
+require_once BASEDIR . 'src/ogPlanner/model/INotification.php';
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,19 +25,19 @@ class Notification implements INotification
 
     /**
      * @var bool
-     * @ORM\Column(type="bool", options={"default": true})
+     * @ORM\Column(type="boolean", options={"default": true})
      */
     protected bool $email;
 
     /**
      * @var bool
-     * @ORM\Column(type="bool", options={"default": false})
+     * @ORM\Column(type="boolean", options={"default": false})
      */
     protected bool $ogApp;
 
     /**
      * @var bool
-     * @ORM\Column(type="bool", options={"default": false})
+     * @ORM\Column(type="boolean", options={"default": false})
      */
     protected bool $whatsApp;
 
