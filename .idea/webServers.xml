@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="9521bc14-d995-40e9-92c3-60f4139bca4c" name="ionos" url="">
-        <fileTransfer rootFolder="/nk_main/og-planner" accessType="SFTP" host="home748572683.1and1-data.host" port="22" sshConfigId="6f049b6a-a7fe-4e73-92b8-f7744992c9be" sshConfig="u94446611@home748572683.1and1-data.host:22 password">
+      <webServer id="f61d657d-e1b5-4cae-a544-879b6d5ce2c0" name="og-planner">
+        <fileTransfer accessType="SFTP" host="home748572683.1and1-data.host" port="22" sshConfigId="6f049b6a-a7fe-4e73-92b8-f7744992c9be" sshConfig="u94446611-og-planner@home748572683.1and1-data.host:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

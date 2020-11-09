@@ -16,7 +16,7 @@ class OGMailer
         $subject = 'Du hast Vertretung';
         $headers = "MIME-Version: 1.0\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8\r\n";
-        $content = "<style>
+        $content = "<head><style>
                         table {
                           border-collapse: collapse;
                           width: 100%;
@@ -31,7 +31,7 @@ class OGMailer
                         tr:nth-child(even) {
                           background-color: #dddddd;
                         }
-                    </style>";
+                    </style><title>Du hast Vertretung</title></head>";
         $content .= "<h2>Hallo {$user->getName()}</h2>";
         $content .= "<p>Du hast am <b>{$planDate}</b> Vertretung!</p>";
         $content .= '<table>

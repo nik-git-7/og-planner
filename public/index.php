@@ -61,12 +61,11 @@ function main(): int
     /** @var IUserCourseTimetableConnectorRepo $connectorRepo */
     /** @var IUserRepo $userRepo */
     $entityManager = getEntityManager();
-    echo UserCourseTimetableConnector::class;
     $connectorRepo = $entityManager->getRepository(UserCourseTimetableConnector::class);
     $userRepo = $entityManager->getRepository(User::class);
 
     foreach ($map as $course => $entries) {
-        if (!count($entries)) {
+        if (count($entries) == 0) {
             continue;
         }
         $relevantEntries = [];
@@ -86,20 +85,19 @@ function main(): int
                 $dateParsed = date_parse($ogScraperData['plan_date']);
                 $dateStr = "{$dateParsed['day']}.{$dateParsed['month']}.{$dateParsed['year']}";
                 $dayOfWeek = date('N', strtotime($dateStr)) - 1;
-                $timetables = $timetableRepo->findByTimetableIdAndDay($timetableId, $dayOfWeek);       // Only get timetables with matching date
+                $dayTimetables = $timetableRepo->findByTimetableIdAndDay($timetableId, $dayOfWeek);       // Only get timetables with matching date
 
-                if ($timetables == null) {
-                    Util::logToFile('Error 7348754362871365831139: timetables should never be null here!');
+                if ($dayTimetables == null) {
                     continue;
                 }
 
-                /** @var ITimetable $timetable */
-                foreach ($timetables as $timetable) {
+                /** @var ITimetable $dayTimetable */
+                foreach ($dayTimetables as $dayTimetable) {
                     // Wie sehen hier $entries aus?
                     /** @var IEntry $entry */
                     foreach ($entries as $entry) {
-                        if ($timetable->getLesson() == $entry->getLesson() &&
-                            $timetable->getSubject() == $entry->getSubject()) {    // Vertretung!
+                        if ($dayTimetable->getLesson() == $entry->getLesson() &&
+                            $dayTimetable->getSubject() == $entry->getSubject()) {    // Vertretung!
                             $relevantEntries[] = $entry;
                         }
                     }
@@ -117,10 +115,10 @@ function main(): int
         foreach ($emailUsers as $user) { // Todo: Obersufenschüler müssen nicht zu allen Entries Vertretung haben! man muss die Entries noch filtern! Relevant entries
             if (OGMailer::sendEntryMail($user, $relevantEntries, $ogScraperData['plan_date'])) {
                 Util::logToFile('Successfully sent E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
-                    ' with E-Mail ' . $user->getEmail());
+                    ' with E-Mail ' . $user->getEmail() . ' for course ' . $course);
             } else {
                 Util::logToFile('Could not send E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
-                    ' with E-Mail ' . $user->getEmail());
+                    ' with E-Mail ' . $user->getEmail() . ' for course ' . $course);
             }
         }
     }
