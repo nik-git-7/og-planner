@@ -1,0 +1,42 @@
+Function main() {
+
+    Entry = (lesson, subject)
+    Array<course => Array<Entry>> map = ...
+    string pageDate = ...
+    int day = dateToDay(pageDate)
+
+    Foreach(users As user) {
+        Array<Entry> mailEntries;
+
+        Array<(userId, course, timetableId)> ucts = findUctsByUserId(user.id)
+
+        Foreach(ucts As uct) {
+            Array courseEntries = getEntriesByCourse(map, course)
+
+            if (uct.timetableId == 0) {
+                mailEntries.addAll(courseEntries)
+            } else {
+                (lesson, subject) dayTimetable = findTimetablesByIdAndDay(uct.timetableId, day)
+                Foreach(courseEntries AS entry {
+                    if (dayTimetable.lesson == entry.lesson And dayTimetable.subject == entry.subject) {
+                        mailEntries.add(entry)
+                    }
+                }
+            }
+        }
+
+        if (mailEntries.length != null) {
+            sendMail(user, entries, pageDate)
+        }
+    }
+}
+
+Function getEntriesByCourse(map, sc) {
+    Array re
+    Foreach(map As course => entries) {
+        if (course == sc) {
+            entries.addAll(entries)
+        }
+    }
+    return re
+}
