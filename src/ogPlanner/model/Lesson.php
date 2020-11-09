@@ -43,7 +43,7 @@ class Lesson implements ILesson
      * @ORM\Column(type="integer")
      * @var int
      */
-    protected int $lesson;
+    protected int $position;
 
     /**
      * @ORM\Column(type="string")
@@ -56,15 +56,15 @@ class Lesson implements ILesson
      * @param int $id
      * @param int $timetableId
      * @param int $day
-     * @param int $lesson
+     * @param int $position
      * @param string $subject
      */
-    public function __construct(int $id, int $timetableId, int $day, int $lesson, string $subject)
+    public function __construct(int $id, int $timetableId, int $day, int $position, string $subject)
     {
         $this->id = $id;
         $this->timetableId = $timetableId;
         $this->day = $day;
-        $this->lesson = $lesson;
+        $this->position = $position;
         $this->subject = $subject;
     }
 
@@ -97,7 +97,7 @@ class Lesson implements ILesson
      */
     public function getPosition(): int
     {
-        return $this->lesson;
+        return $this->position;
     }
 
     /**
