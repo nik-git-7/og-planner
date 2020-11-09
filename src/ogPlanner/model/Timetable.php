@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="ogPlanner\dao\TimetableRepo")
- * @ORM\Table(name="timetable")
+ * @ORM\Table(name="timetables")
  */
 class Timetable implements ITimetable
 {
