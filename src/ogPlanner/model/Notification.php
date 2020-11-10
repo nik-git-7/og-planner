@@ -39,6 +39,16 @@ class Notification implements INotification
      */
     protected bool $whatsApp;
 
+    public function __construct($id = false, $email = false, $ogApp = false, $whatsApp = false)
+    {
+        if ($id) {
+            $this->id = $id;
+            $this->email = $email;
+            $this->ogApp = $ogApp;
+            $this->whatsApp = $whatsApp;
+        }
+    }
+
     /**
      * @return int
      */

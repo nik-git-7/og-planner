@@ -4,23 +4,24 @@ namespace ogPlanner\dao;
 
 use Doctrine\ORM\EntityRepository;
 use ogPlanner\model\ILesson;
+use ogPlanner\model\Lesson;
 
 
 class LessonRepo extends EntityRepository implements ILessonRepo
 {
-    public function findById(int $id): ?ILesson
+    public function findById(int $id): ?Lesson
     {
         return $this->find($id);
     }
 
-    public function findByTimetableId(int $id): array
+    public function findByTimetableId(int $timetableId): array
     {
-        return $this->findBy(['timetableId' => $id]);
+        return $this->findBy(['timetableId' => $timetableId]);
     }
 
-    public function findByTimetableIdAndDay(int $id, int $day): array
+    public function findByTimetableIdAndDay(int $timetableId, int $day): array
     {
-        return $this->findBy(['timetableId' => $id, 'day' => $day]);
+        return $this->findBy(['timetableId' => $timetableId, 'day' => $day]);
     }
 
     public function findByDay(int $day): array

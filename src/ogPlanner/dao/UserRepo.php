@@ -13,9 +13,9 @@ class UserRepo extends EntityRepository implements IUserRepo
         return $this->find($id);
     }
 
-    public function findByName(string $username): array
+    public function findByName(string $name): array
     {
-        return $this->findBy(['name' => $username]);
+        return $this->findBy(['name' => $name]);
     }
 
     public function findByEmail(string $email): array
@@ -23,9 +23,9 @@ class UserRepo extends EntityRepository implements IUserRepo
         return $this->findBy(['email' => $email]);
     }
 
-    public function findByNotificationId(int $id): array
+    public function findByNotificationId(int $notificationId): array
     {
-        return $this->findBy(['notificationId' => $id]);
+        return $this->findBy(['notificationId' => $notificationId]);
     }
 
     public function findAll(): array

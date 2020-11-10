@@ -10,4 +10,6 @@ interface IUser
     public function getEmail(): string;
 
     public function getName(): string;
+
+    public function getNotificationId(): int;
 }
