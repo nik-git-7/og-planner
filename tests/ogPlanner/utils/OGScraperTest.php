@@ -13,7 +13,7 @@ class OGScraperTest extends TestCase
 
     public function setUp(): void
     {
-        $this->ogScraper = new OGScraper(Config::BASEDIR . "tests/res/planner_page_1.html");
+        $this->ogScraper = new DateScraper(Config::BASEDIR . "tests/res/planner_page_1.html");
     }
 
     public function testScrape()

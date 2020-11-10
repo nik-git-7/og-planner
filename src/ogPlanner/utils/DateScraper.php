@@ -5,7 +5,7 @@ namespace ogPlanner\utils;
 use DOMXPath;
 
 
-class OGScraper extends AbstractScraper
+class DateScraper extends AbstractScraper
 {
     protected function parse(DOMXPath $xpath)
     {
