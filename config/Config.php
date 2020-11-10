@@ -16,10 +16,11 @@ class Config
     const DB_PASSWORD = '';
     const DB_NAME = 'og-db';
     const DB_DRIVER = 'pdo_mysql';
+    
     const BASEDIR = __DIR__ . '/../';
 
     const PLANNER_URL = 'http://vertretungsplan.gym-oppenheim.de/V_DC_001.html';
-    //const 'PLANNER_URL' =  BASEDIR . 'tests/res/planner_page_1.html'
+    const TEST_PLANNER_URL_1 = self::BASEDIR . 'tests/res/planner_page_1.html';
 
     const LOG_FILE = '../var/logfile.log';
     const LAST_UPDATE = '../var/last_update';
