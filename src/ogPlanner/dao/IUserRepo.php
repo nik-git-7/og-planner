@@ -9,11 +9,11 @@ interface IUserRepo
 {
     public function findById(int $id): ?User;
 
-    public function findByName(string $username): array;
+    public function findByName(string $name): array;
 
     public function findByEmail(string $email): array;
 
-    public function findByNotificationId(int $id): array;
+    public function findByNotificationId(int $notificationId): array;
 
     public function findAll(): array;
 }

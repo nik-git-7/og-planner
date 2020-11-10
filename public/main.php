@@ -43,7 +43,8 @@ function main(): int
     $ogScraper = new OGScraper(Config::PLANNER_URL);
     $ogScraperData = $ogScraper->scrape();
 
-    $dateParsed = date_parse($ogScraperData['plan_date']);
+    $plainDate = $ogScraperData['plan_date'];
+    $dateParsed = date_parse($plainDate);
     $dateStr = "{$dateParsed['day']}.{$dateParsed['month']}.{$dateParsed['year']}";
     $planDayOfWeek = date('N', strtotime($dateStr)) - 1;
 
@@ -85,7 +86,7 @@ function main(): int
             continue;
         }
 
-        if (OGMailer::sendEntryMail($user, $emailEntries, $planDayOfWeek)) {
+        if (OGMailer::sendEntryMail($user, $emailEntries, $plainDate)) {
             Util::logToFile('Successfully sent E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
                 ' with E-Mail ' . $user->getEmail());
         } else {

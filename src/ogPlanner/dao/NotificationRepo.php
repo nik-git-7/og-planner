@@ -14,18 +14,18 @@ class NotificationRepo extends EntityRepository implements INotificationRepo
         return $this->find($id);
     }
 
-    public function findByEmail(bool $email): array
+    public function findByEmail(bool $emailEnabled): array
     {
-        return $this->findBy(['email' => $email]);
+        return $this->findBy(['email' => $emailEnabled]);
     }
 
-    public function findByOgApp(bool $ogApp): array
+    public function findByOgApp(bool $ogAppEnabled): array
     {
-        return $this->findBy(['ogApp' => $ogApp]);
+        return $this->findBy(['ogApp' => $ogAppEnabled]);
     }
 
-    public function findByWhatsApp(bool $whatsApp): array
+    public function findByWhatsApp(bool $whatsAppEnabled): array
     {
-        return $this->findBy(['whatsApp' => $whatsApp]);
+        return $this->findBy(['whatsApp' => $whatsAppEnabled]);
     }
 }

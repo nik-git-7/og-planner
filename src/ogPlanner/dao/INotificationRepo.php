@@ -9,9 +9,9 @@ interface INotificationRepo
 {
     public function findById(int $id): ?Notification;
 
-    public function findByEmail(bool $email): array;
+    public function findByEmail(bool $emailEnabled): array;
 
-    public function findByOgApp(bool $ogApp): array;
+    public function findByOgApp(bool $ogAppEnabled): array;
 
-    public function findByWhatsApp(bool $whatsApp): array;
+    public function findByWhatsApp(bool $whatsAppEnabled): array;
 }

@@ -60,4 +60,9 @@ class User implements IUser
     {
         return $this->id;
     }
+
+    public function getNotificationId(): int
+    {
+        return $this->notificationId;
+    }
 }
