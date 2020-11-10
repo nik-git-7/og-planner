@@ -43,14 +43,12 @@ class UserCourseTimetableConnector implements IUserCourseTimetableConnector
      */
     protected int $timetableId;
 
-    public function __construct($id = false, $userId = false, $course = false, $timetableId = false)
+    public function __construct(int $id, int $userId, string $course, int $timetableId = 0)
     {
-        if ($id) {
-            $this->id = $id;
-            $this->userId = $userId;
-            $this->course = $course;
-            $this->timetableId = $timetableId;
-        }
+        $this->id = $id;
+        $this->userId = $userId;
+        $this->course = $course;
+        $this->timetableId = $timetableId;
     }
 
     public function getConnection(): array

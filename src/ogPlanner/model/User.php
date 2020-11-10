@@ -23,7 +23,7 @@ class User implements IUser
      * @ORM\Column(type="string")
      * @var string
      */
-    protected string $name; // Todo: Nullable?
+    protected string $name;
 
     /**
      * @ORM\Column(type="string")
@@ -37,13 +37,12 @@ class User implements IUser
      */
     protected int $notificationId;
 
-    public function __construct($id = false, $email = false, $name = false)
+    public function __construct(int $id, string $email, string $name, int $notificationId = 1)
     {
-        if ($id) {
-            $this->id = $id;
-            $this->email = $email;
-            $this->name = $name;
-        }
+        $this->id = $id;
+        $this->email = $email;
+        $this->name = $name;
+        $this->notificationId = $notificationId;
     }
 
     public function getEmail(): string
