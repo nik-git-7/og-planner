@@ -1,5 +1,7 @@
 <?php
 
+require_once '../vendor/autoload.php';
+
 use ogPlanner\dao\ILessonRepo;
 use ogPlanner\dao\IUserCourseTimetableConnectorRepo;
 use ogPlanner\dao\IUserRepo;

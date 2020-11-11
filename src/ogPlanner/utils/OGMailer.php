@@ -46,7 +46,7 @@ class OGMailer
         /** @var IEntry $entry */
         foreach ($entries as $entry) {
             $content .= "<tr>
-                                <td>{$entry->getSchoolClass()}</td>
+                                <td>{$entry->getCourse()}</td>
                                 <td>{$entry->getPosition()}</td>
                                 <td>{$entry->getRepresentative()}</td>
                                 <td>{$entry->getSubject()}</td>

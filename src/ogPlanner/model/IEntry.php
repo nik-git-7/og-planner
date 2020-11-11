@@ -5,7 +5,7 @@ namespace ogPlanner\model;
 
 interface IEntry
 {
-    public function getSchoolClass(): string;
+    public function getCourse(): string;
 
     public function getPosition(): int;
 

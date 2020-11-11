@@ -3,13 +3,14 @@
 namespace ogPlanner\model;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 
 /**
  * @ORM\Entity(repositoryClass="ogPlanner\dao\UserRepo")
  * @ORM\Table(name="users")
  */
-class User implements IUser
+class User implements IUser, JsonSerializable
 {
     /**
      * @ORM\Id
@@ -63,5 +64,15 @@ class User implements IUser
     public function getNotificationId(): int
     {
         return $this->notificationId;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'email' => $this->getEmail(),
+            'name' => $this->getName(),
+            'notificationId' => $this->getNotificationId()
+        ];
     }
 }

@@ -3,6 +3,7 @@
 namespace ogPlanner\model;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 
 /**
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ogPlanner\dao\NotificationRepo")
  * @ORM\Table(name="notifications")
  */
-class Notification implements INotification
+class Notification implements INotification, JsonSerializable
 {
     /**
      * @ORM\Id
@@ -77,5 +78,39 @@ class Notification implements INotification
     public function isWhatsAppEnabled(): bool
     {
         return $this->whatsApp;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getEmail(): bool
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getOgApp(): bool
+    {
+        return $this->ogApp;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getWhatsApp(): bool
+    {
+        return $this->whatsApp;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'email' => $this->getEmail(),
+            'ogApp' => $this->getOgApp(),
+            'whatsApp' => $this->getWhatsApp()
+        ];
     }
 }

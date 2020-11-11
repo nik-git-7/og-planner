@@ -42,9 +42,9 @@ class Main
     {
         $dateScraper = new DateScraper(Config::PLANNER_URL);
         $dateScraperData = $dateScraper->scrape();
-        if (!Util::updateFileContents($dateScraperData['plan_update'], Config::LAST_UPDATE)) {
-            return [];
-        }
+        /*        if (!Util::updateFileContents($dateScraperData['plan_update'], Config::LAST_UPDATE)) {
+                    return [];
+                }*/
 
         $tableScraper = new TableScraper(Config::PLANNER_URL);
         /** @var ITable $table */
@@ -53,7 +53,7 @@ class Main
             return [];
         }
 
-        return $this->getUserEntryDayMap(Util::convertTableToMap($table), $dateScraperData['plan_update']);
+        return $this->getUserEntryDayMap(Util::convertTableToMap($table), $dateScraperData['plan_date']);
     }
 
     public function getUserEntryDayMap($courseMap, $planDate): array
@@ -76,7 +76,8 @@ class Main
                 $entries = $courseMap[$course];
                 $dayLessons = $this->lessonRepo->findByTimetableIdAndDay($uctc->getTimetableId(),
                     self::convertPlanDayToDayOfWeek($planDate));
-                $emailEntries[] = self::filterEmailEntries($entries, $dayLessons);
+                $emailEntries[] = $uctc->getTimetableId() == 0 ? $entries :
+                    self::filterEmailEntries($entries, $dayLessons);
             }
 
             $resultUserEntryDayMap[] = ['user' => $user, 'email_entries' => $emailEntries,
@@ -120,8 +121,7 @@ class Main
     private function isRelevantEntry($lessons)
     {
         return function ($entry) use ($lessons) {
-            return count(array_filter($lessons, $this->hasEqualFieldsTo($entry))) >= 1 ||
-                count($lessons) == 0;
+            return count(array_filter($lessons, $this->hasEqualFieldsTo($entry))) >= 1;
         };
     }
 

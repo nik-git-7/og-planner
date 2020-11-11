@@ -3,13 +3,14 @@
 namespace ogPlanner\model;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 
 /**
  * @ORM\Entity(repositoryClass="ogPlanner\dao\LessonRepo")
  * @ORM\Table(name="lessons")
  */
-class Lesson implements ILesson
+class Lesson implements ILesson, JsonSerializable
 {
     const MONDAY = 0;
     const TUESDAY = 1;
@@ -106,5 +107,16 @@ class Lesson implements ILesson
     public function getSubject(): string
     {
         return $this->subject;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'timetableId' => $this->getTimetableId(),
+            'day' => $this->getDay(),
+            'position' => $this->getPosition(),
+            'subject' => $this->getSubject()
+        ];
     }
 }

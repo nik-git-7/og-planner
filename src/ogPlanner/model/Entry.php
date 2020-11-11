@@ -2,10 +2,12 @@
 
 namespace ogPlanner\model;
 
+use JsonSerializable;
 
-class Entry implements IEntry
+
+class Entry implements IEntry, JsonSerializable
 {
-    protected string $schoolClass;
+    protected string $course;
     protected int $position;
     protected string $representative;
     protected string $subject;
@@ -15,7 +17,7 @@ class Entry implements IEntry
 
     /**
      * Entry constructor.
-     * @param string $schoolClass
+     * @param string $course
      * @param int $position
      * @param string $representative
      * @param string $subject
@@ -23,9 +25,9 @@ class Entry implements IEntry
      * @param string $kind
      * @param string $notification
      */
-    public function __construct(string $schoolClass, int $position, string $representative, string $subject, string $room, string $kind, string $notification)
+    public function __construct(string $course, int $position, string $representative, string $subject, string $room, string $kind, string $notification)
     {
-        $this->schoolClass = $schoolClass;
+        $this->course = $course;
         $this->position = $position;
         $this->representative = $representative;
         $this->subject = $subject;
@@ -37,9 +39,9 @@ class Entry implements IEntry
     /**
      * @return string
      */
-    public function getSchoolClass(): string
+    public function getCourse(): string
     {
-        return $this->schoolClass;
+        return $this->course;
     }
 
     /**
@@ -88,5 +90,18 @@ class Entry implements IEntry
     public function getNotification(): string
     {
         return $this->notification;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'course' => $this->getCourse(),
+            'position' => $this->getPosition(),
+            'representative' => $this->getRepresentative(),
+            'subject' => $this->getSubject(),
+            'room' => $this->getRoom(),
+            'kind' => $this->getKind(),
+            'notification' => $this->getNotification(),
+        ];
     }
 }

@@ -4,6 +4,7 @@ namespace ogPlanner\model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
+use JsonSerializable;
 
 
 /**
@@ -15,7 +16,7 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
  *     }
  *  )
  */
-class UserCourseTimetableConnector implements IUserCourseTimetableConnector
+class UserCourseTimetableConnector implements IUserCourseTimetableConnector, JsonSerializable
 {
     /**
      * @ORM\Id
@@ -86,5 +87,15 @@ class UserCourseTimetableConnector implements IUserCourseTimetableConnector
     public function getTimetableId(): int
     {
         return $this->timetableId;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'userId' => $this->getUserId(),
+            'course' => $this->getCourse(),
+            'timetableId' => $this->getTimetableId()
+        ];
     }
 }
