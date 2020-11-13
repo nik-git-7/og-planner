@@ -4,7 +4,6 @@ namespace ogPlanner\dao\fake;
 
 use ogPlanner\dao\IUserCourseTimetableConnectorRepo;
 use ogPlanner\model\IUserCourseTimetableConnector;
-use ogPlanner\model\UserCourseTimetableConnector;
 
 
 class FakeUserCourseTimetableConnectorRepo extends FakeRepo implements IUserCourseTimetableConnectorRepo
@@ -14,7 +13,7 @@ class FakeUserCourseTimetableConnectorRepo extends FakeRepo implements IUserCour
         parent::__construct($db);
     }
 
-    public function findById(int $id): ?UserCourseTimetableConnector
+    public function findById(int $id): ?IUserCourseTimetableConnector
     {
         $field = function(IUserCourseTimetableConnector $uctc) {return $uctc->getId();};
         return $this->searchOne($field, $id);

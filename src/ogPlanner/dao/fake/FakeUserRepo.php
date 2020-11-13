@@ -4,7 +4,6 @@ namespace ogPlanner\dao\fake;
 
 use ogPlanner\dao\IUserRepo;
 use ogPlanner\model\IUser;
-use ogPlanner\model\User;
 
 
 class FakeUserRepo extends FakeRepo implements IUserRepo
@@ -14,7 +13,7 @@ class FakeUserRepo extends FakeRepo implements IUserRepo
         parent::__construct($db);
     }
 
-    public function findById(int $id): ?User
+    public function findById(int $id): ?IUser
     {
         $field = function(IUser $user) {return $user->getId();};
         return $this->searchOne($field, $id);

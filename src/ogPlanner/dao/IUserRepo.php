@@ -2,12 +2,12 @@
 
 namespace ogPlanner\dao;
 
-use ogPlanner\model\User;
+use ogPlanner\model\IUser;
 
 
 interface IUserRepo
 {
-    public function findById(int $id): ?User;
+    public function findById(int $id): ?IUser;
 
     public function findByName(string $name): array;
 

@@ -3,12 +3,12 @@
 namespace ogPlanner\dao;
 
 use Doctrine\ORM\EntityRepository;
-use ogPlanner\model\User;
+use ogPlanner\model\IUser;
 
 
 class UserRepo extends EntityRepository implements IUserRepo
 {
-    public function findById(int $id): ?User
+    public function findById(int $id): ?IUser
     {
         return $this->find($id);
     }

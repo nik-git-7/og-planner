@@ -4,12 +4,11 @@ namespace ogPlanner\dao;
 
 use Doctrine\ORM\EntityRepository;
 use ogPlanner\model\ILesson;
-use ogPlanner\model\Lesson;
 
 
 class LessonRepo extends EntityRepository implements ILessonRepo
 {
-    public function findById(int $id): ?Lesson
+    public function findById(int $id): ?ILesson
     {
         return $this->find($id);
     }

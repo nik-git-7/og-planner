@@ -4,6 +4,7 @@ namespace ogPlanner;
 
 use Config;
 use ogPlanner\dao\ILessonRepo;
+use ogPlanner\dao\INotificationRepo;
 use ogPlanner\dao\IUserCourseTimetableConnectorRepo;
 use ogPlanner\dao\IUserRepo;
 use ogPlanner\model\ITable;
@@ -20,6 +21,7 @@ class Main
     private IUserRepo $userRepo;
     private IUserCourseTimetableConnectorRepo $connectorRepo;
     private ILessonRepo $lessonRepo;
+    private INotificationRepo $notificationRepo;
     private string $scrapeUrl;
 
     /**
@@ -28,14 +30,17 @@ class Main
      * @param IUserRepo $userRepo
      * @param IUserCourseTimetableConnectorRepo $connectorRepo
      * @param ILessonRepo $lessonRepo
+     * @param INotificationRepo $notificationRepo
      */
     public function __construct(string $scrapeUrl, IUserRepo $userRepo,
-                                IUserCourseTimetableConnectorRepo $connectorRepo, ILessonRepo $lessonRepo)
+                                IUserCourseTimetableConnectorRepo $connectorRepo, ILessonRepo $lessonRepo,
+                                INotificationRepo $notificationRepo)
     {
         $this->userRepo = $userRepo;
         $this->connectorRepo = $connectorRepo;
         $this->lessonRepo = $lessonRepo;
         $this->scrapeUrl = $scrapeUrl;
+        $this->notificationRepo = $notificationRepo;
     }
 
     public function run(): array
@@ -53,7 +58,9 @@ class Main
             return [];
         }
 
-        return $this->getUserEntryDayMap(Util::convertTableToMap($table), $dateScraperData['plan_date']);
+        $userEntryDayMap = $this->getUserEntryDayMap(Util::convertTableToMap($table), $dateScraperData['plan_date']);
+        $this->sendMails($userEntryDayMap);
+        return $userEntryDayMap;
     }
 
     public function getUserEntryDayMap($courseMap, $planDate): array
@@ -63,7 +70,7 @@ class Main
 
         /** @var IUser $user */
         foreach ($users as $user) {
-            $emailEntries = [];
+            $usersEmailEntries = [];
             $uctcs = $this->connectorRepo->findByUserId($user->getId());
 
             /** @var IUserCourseTimetableConnector $uctc */
@@ -76,14 +83,17 @@ class Main
                 $entries = $courseMap[$course];
                 $dayLessons = $this->lessonRepo->findByTimetableIdAndDay($uctc->getTimetableId(),
                     self::convertPlanDayToDayOfWeek($planDate));
-                $emailEntries[] = $uctc->getTimetableId() == 0 ? $entries :
+                $uctcEmailEntries = $uctc->getTimetableId() == 0 ? $entries :
                     self::filterEmailEntries($entries, $dayLessons);
+                $usersEmailEntries = array_merge($usersEmailEntries, $uctcEmailEntries);
             }
 
-            $resultUserEntryDayMap[] = ['user' => $user, 'email_entries' => $emailEntries,
+
+            $resultUserEntryDayMap[] = ['user' => $user, 'email_entries' => $usersEmailEntries,
                 'plan_date' => $planDate];
         }
-
+        var_dump($resultUserEntryDayMap);
+        echo "\n\n\n";
         return $resultUserEntryDayMap;
     }
 
@@ -96,8 +106,14 @@ class Main
 
     public function sendMail(array $item): void
     {
+        /** @var IUser $user */
         $user = $item['user'];
-        if (OGMailer::sendEntryMail($user, $item['email_entries'], $item['plain_date'])) {
+        $usersNotificationId = $user->getNotificationId();
+        $userMailEnabled = $this->notificationRepo->findById($usersNotificationId);
+        if (!$userMailEnabled) {
+            return;
+        }
+        if (OGMailer::sendEntryMail($user, $item['email_entries'], $item['plan_date'])) {
             Util::logToFile('Successfully sent E-Mail to #' . $user->getId() . ' - ' . $user->getName() .
                 ' with E-Mail ' . $user->getEmail());
         } else {

@@ -3,12 +3,11 @@
 namespace ogPlanner\dao;
 
 use ogPlanner\model\ILesson;
-use ogPlanner\model\Lesson;
 
 
 interface ILessonRepo
 {
-    public function findById(int $id): ?Lesson;
+    public function findById(int $id): ?ILesson;
 
     public function findByTimetableId(int $timetableId): array;
 

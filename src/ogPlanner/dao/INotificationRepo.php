@@ -2,12 +2,12 @@
 
 namespace ogPlanner\dao;
 
-use ogPlanner\model\Notification;
+use ogPlanner\model\INotification;
 
 
 interface INotificationRepo
 {
-    public function findById(int $id): ?Notification;
+    public function findById(int $id): ?INotification;
 
     public function findByEmail(bool $emailEnabled): array;
 

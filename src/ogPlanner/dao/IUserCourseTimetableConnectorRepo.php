@@ -2,12 +2,12 @@
 
 namespace ogPlanner\dao;
 
-use ogPlanner\model\UserCourseTimetableConnector;
+use ogPlanner\model\IUserCourseTimetableConnector;
 
 
 interface IUserCourseTimetableConnectorRepo
 {
-    public function findById(int $id): ?UserCourseTimetableConnector;
+    public function findById(int $id): ?IUserCourseTimetableConnector;
 
     public function findByUserId(int $userId): array;
 

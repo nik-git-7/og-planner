@@ -4,7 +4,6 @@ namespace ogPlanner\dao\fake;
 
 use ogPlanner\dao\INotificationRepo;
 use ogPlanner\model\INotification;
-use ogPlanner\model\Notification;
 
 
 class FakeNotificationRepo extends FakeRepo implements INotificationRepo
@@ -14,7 +13,7 @@ class FakeNotificationRepo extends FakeRepo implements INotificationRepo
         parent::__construct($db);
     }
 
-    public function findById(int $id): ?Notification
+    public function findById(int $id): ?INotification
     {
         $field = function(INotification $notification) {return $notification->getId();};
         return $this->searchOne($field, $id);

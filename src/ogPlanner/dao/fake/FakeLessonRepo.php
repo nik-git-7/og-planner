@@ -4,7 +4,6 @@ namespace ogPlanner\dao\fake;
 
 use ogPlanner\dao\ILessonRepo;
 use ogPlanner\model\ILesson;
-use ogPlanner\model\Lesson;
 
 
 class FakeLessonRepo extends FakeRepo implements ILessonRepo
@@ -14,7 +13,7 @@ class FakeLessonRepo extends FakeRepo implements ILessonRepo
         parent::__construct($db);
     }
 
-    public function findById(int $id): ?Lesson
+    public function findById(int $id): ?ILesson
     {
         $field = function(ILesson $lesson) {return $lesson->getId();};
         return $this->searchOne($field, $id);

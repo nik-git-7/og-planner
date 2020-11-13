@@ -3,12 +3,12 @@
 namespace ogPlanner\dao;
 
 use Doctrine\ORM\EntityRepository;
-use ogPlanner\model\UserCourseTimetableConnector;
+use ogPlanner\model\IUserCourseTimetableConnector;
 
 
 class UserCourseTimetableConnectorRepo extends EntityRepository implements IUserCourseTimetableConnectorRepo
 {
-    public function findById(int $id): ?UserCourseTimetableConnector
+    public function findById(int $id): ?IUserCourseTimetableConnector
     {
         return $this->find($id);
     }

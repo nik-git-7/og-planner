@@ -3,13 +3,13 @@
 namespace ogPlanner\dao;
 
 use Doctrine\ORM\EntityRepository;
-use ogPlanner\model\Notification;
+use ogPlanner\model\INotification;
 
 
 class NotificationRepo extends EntityRepository implements INotificationRepo
 {
 
-    public function findById(int $id): ?Notification
+    public function findById(int $id): ?INotification
     {
         return $this->find($id);
     }
