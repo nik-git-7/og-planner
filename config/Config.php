@@ -10,12 +10,6 @@ class Config
 {
     const EXIT_SUCCESS = 0;
     const EXIT_FAILURE = 1;
-
-    const DB_HOST = '127.0.0.1';
-    const DB_USERNAME = 'root';
-    const DB_PASSWORD = '';
-    const DB_NAME = 'og-db';
-    const DB_DRIVER = 'pdo_mysql';
     
     const BASEDIR = __DIR__ . '/../';
 
@@ -34,11 +28,11 @@ class Config
         $config = Setup::createAnnotationMetadataConfiguration(array(self::BASEDIR . '/src'), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
 
         $connectionParams = array(
-            'dbname' => self::DB_NAME,
-            'user' => self::DB_USERNAME,
-            'password' => self::DB_PASSWORD,
-            'host' => self::DB_HOST,
-            'driver' => self::DB_DRIVER
+            'dbname' => 'og-db',
+            'user' => 'root',
+            'password' => '',
+            'host' => '127.0.0.1',
+            'driver' => 'pdo_mysql'
         );
 
         $conn = null;
