@@ -110,7 +110,7 @@ class Main
         $user = $item['user'];
         $usersNotificationId = $user->getNotificationId();
         $userMailEnabled = $this->notificationRepo->findById($usersNotificationId);
-        if (!$userMailEnabled) {
+        if (!$userMailEnabled->isEmailEnabled()) {
             return;
         }
         if (OGMailer::sendEntryMail($user, $item['email_entries'], $item['plan_date'])) {

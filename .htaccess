@@ -1,4 +1,4 @@
 Deny From All
-<FilesMatch "^public/index\.php$">
-Allow From All
-</FilesMatch>
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
